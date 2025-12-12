@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class shrekcutscene : MonoBehaviour
+public class shrekboatcutscene : MonoBehaviour
 {
     [SerializeField] private GameObject[] puppets;
     [SerializeField] private AudioClip[] lines;

@@ -352,8 +352,8 @@
     <Compile Include="Library\PackageCache\com.unity.xr.interaction.toolkit@3.1.2\Runtime\Inputs\Composites\FallbackComposite.cs" />
     <Compile Include="Library\PackageCache\com.unity.xr.interaction.toolkit@3.1.2\Runtime\AR\Inputs\ScreenSpacePinchScaleInput.cs" />
     <Compile Include="Library\PackageCache\com.unity.xr.interaction.toolkit@3.1.2\Runtime\AR\Gestures\GestureRecognizer.deprecated.cs" />
-    <Compile Include="Library\PackageCache\com.unity.xr.interaction.toolkit@3.1.2\Runtime\Feedback\SimpleAudioFeedback.cs" />
     <Compile Include="Library\PackageCache\com.unity.xr.interaction.toolkit@3.1.2\Runtime\AffordanceSystem\Receiver\Primitives\Vector3AffordanceReceiver.cs" />
+    <Compile Include="Library\PackageCache\com.unity.xr.interaction.toolkit@3.1.2\Runtime\Feedback\SimpleAudioFeedback.cs" />
     <Compile Include="Library\PackageCache\com.unity.xr.interaction.toolkit@3.1.2\Runtime\Interaction\Attachment\InteractionAttachController.cs" />
     <Compile Include="Library\PackageCache\com.unity.xr.interaction.toolkit@3.1.2\Runtime\Interaction\Filtering\Poke\IMultiPokeStateDataProvider.cs" />
     <Compile Include="Library\PackageCache\com.unity.xr.interaction.toolkit@3.1.2\Runtime\Locomotion\Legacy\SnapTurnProviderBase.cs" />

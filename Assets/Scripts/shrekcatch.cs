@@ -9,9 +9,11 @@ public class shrekwater : MonoBehaviour
     public Material failmat;
     public AudioSource audio;
     public AudioClip[] clips;
+    public LayerMask mask;
     private void OnTriggerEnter(Collider other)
     {
-        if (this.CompareTag("shrek") )
+        if (this.CompareTag(mask.ToString()))
+            Kill();
             {
 
         }
@@ -20,5 +22,6 @@ public class shrekwater : MonoBehaviour
     IEnumerator Kill()
     {
         yield return new WaitForSeconds(8);
+        SceneManager.LoadScene("shrekswamp");
     }
 }

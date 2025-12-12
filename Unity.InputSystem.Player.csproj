@@ -215,8 +215,8 @@
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.13.1\InputSystem\Plugins\UI\InputSystemUIInputModuleEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.13.1\InputSystem\Plugins\iOS\InputSettingsiOSProvider.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.13.1\InputSystem\Actions\InputAction.cs" />
-    <Compile Include="Library\PackageCache\com.unity.inputsystem@1.13.1\InputSystem\Plugins\DualShock\IDualShockHaptics.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.13.1\InputSystem\Actions\InputActionState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.inputsystem@1.13.1\InputSystem\Plugins\DualShock\IDualShockHaptics.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.13.1\InputSystem\Devices\Precompiled\FastTouchscreen.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.13.1\InputSystem\Editor\AssetImporter\InputActionAssetEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.13.1\InputSystem\Actions\Composites\TwoModifiersComposite.cs" />

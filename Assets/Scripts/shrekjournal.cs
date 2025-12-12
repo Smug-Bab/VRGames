@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using TMPro;
 using UnityEngine;
 
 public class shrekjournal : MonoBehaviour
 {
-    public InputActionReference controller;
-    public Animator anim;
+    public int onioncount = 0;
+    [SerializeField] InputActionReference controller;
+    [SerializeField] Animator anim;
+    [SerializeField] TMP_Text counter;
 
     private void OnEnable()
     {
+
         controller.action.started -= close;
         controller.action.started += open;
+        counter.text = onioncount.ToString();
     }
 
     private void OnDisable()

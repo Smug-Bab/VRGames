@@ -9,8 +9,8 @@ showPackageIndexes = false
 showStatusBar = false
 scopes = {
 	"picker_window_position_offset.D845A788" = "-543;188;467;550"
-	"picker_search_text.D845A788" = "turn "
-	"last_search.D845A788" = "turn "
+	"picker_search_text.D845A788" = "move"
+	"last_search.D845A788" = "move"
 	"OpenInspectorPreview.D845A788" = "0"
 	"currentGroup.D845A788" = "all"
 	"picker_window_position_offset.E06AA71F" = "-67;419;467;550"
@@ -18,6 +18,9 @@ scopes = {
 	"last_search.E06AA71F" = ""
 	"OpenInspectorPreview.E06AA71F" = "0"
 	"currentGroup.E06AA71F" = "all"
+	"last_search.3BE40471" = ""
+	"OpenInspectorPreview.3BE40471" = "0"
+	"currentGroup.3BE40471" = "all"
 }
 providers = {
 	scene = {
@@ -69,6 +72,7 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"j"
 	""
 	"1"
 ]

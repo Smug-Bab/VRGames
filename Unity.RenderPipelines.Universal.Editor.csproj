@@ -139,8 +139,8 @@
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@14.0.9\Editor\ShaderGraph\Targets\UniversalLitSubTarget.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@14.0.9\Editor\ScriptableRendererFeatureEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@14.0.9\Editor\2D\ShapeEditor\GUIFramework\GenericDefaultControl.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@14.0.9\Editor\Overrides\ColorCurvesEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@14.0.9\Editor\ShaderScriptableStripper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@14.0.9\Editor\Overrides\ColorCurvesEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@14.0.9\Editor\Overrides\MotionBlurEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@14.0.9\Editor\2D\ShapeEditor\View\CreatePointAction.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@14.0.9\Editor\GlobalSettings\UniversalGlobalSettingsEditor.cs" />

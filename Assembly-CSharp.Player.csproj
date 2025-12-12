@@ -61,13 +61,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\sonicincrement.cs" />
-    <Compile Include="Assets\Scripts\shrekcutscene.cs" />
+    <Compile Include="Assets\Scripts\shrekhutcutscene.cs" />
     <Compile Include="Assets\Scripts\shrekcatch.cs" />
     <Compile Include="Assets\Scripts\pumpreset.cs" />
+    <Compile Include="Assets\Scripts\shrekboatcutscene.cs" />
     <Compile Include="Assets\Scripts\knucklesincrement.cs" />
+    <Compile Include="Assets\Scripts\shrekonioncollect.cs" />
     <Compile Include="Assets\Scripts\loader.cs" />
+    <Compile Include="Assets\Scripts\shrekcutsceneintro.cs" />
     <Compile Include="Assets\Scripts\shrekjournal.cs" />
-    <Compile Include="Assets\Scripts\shrekcutscene0.cs" />
+    <Compile Include="Assets\Scripts\shrekai.cs" />
+    <Compile Include="Assets\Scripts\shrekfootsteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -851,6 +855,10 @@
       <Project>{B02DB888-5380-4077-2E91-EA59F36C9C73}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime.Player</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.AI.Navigation.Player.csproj">
+      <Project>{F6EF5850-435B-B6B1-7924-793599FA1AE0}</Project>
+      <Name>Unity.AI.Navigation.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.Player.csproj">
       <Project>{01567BDB-FFFD-9AA4-BDBF-488C5BB17047}</Project>
       <Name>Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.Player</Name>
@@ -894,6 +902,10 @@
     <ProjectReference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.Player.csproj">
       <Project>{78BF0455-F2BB-A645-5F4B-3E5DB8586043}</Project>
       <Name>Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Animation.Rigging.Player.csproj">
+      <Project>{3C14E761-03D1-2D99-E198-50B1F9A5FDE5}</Project>
+      <Name>Unity.Animation.Rigging.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Universal.Runtime.Player.csproj">
       <Project>{B49A9730-7ADD-CDFF-7B53-B738F560721A}</Project>

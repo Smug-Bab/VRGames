@@ -61,13 +61,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\sonicincrement.cs" />
-    <Compile Include="Assets\Scripts\shrekcutscene.cs" />
+    <Compile Include="Assets\Scripts\shrekhutcutscene.cs" />
     <Compile Include="Assets\Scripts\shrekcatch.cs" />
     <Compile Include="Assets\Scripts\pumpreset.cs" />
+    <Compile Include="Assets\Scripts\shrekboatcutscene.cs" />
     <Compile Include="Assets\Scripts\knucklesincrement.cs" />
+    <Compile Include="Assets\Scripts\shrekonioncollect.cs" />
     <Compile Include="Assets\Scripts\loader.cs" />
+    <Compile Include="Assets\Scripts\shrekcutsceneintro.cs" />
     <Compile Include="Assets\Scripts\shrekjournal.cs" />
-    <Compile Include="Assets\Scripts\shrekcutscene0.cs" />
+    <Compile Include="Assets\Scripts\shrekai.cs" />
+    <Compile Include="Assets\Scripts\shrekfootsteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -939,9 +943,17 @@
       <Project>{C6C56E13-CD3D-1F33-17FC-A7E2BCC75459}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.AI.Navigation.csproj">
+      <Project>{93C9EDFF-4EC5-91CA-9094-D8E8750B9804}</Project>
+      <Name>Unity.AI.Navigation</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Burst.Editor.csproj">
       <Project>{713D374B-36F7-FB11-DCED-50F0A4A403EE}</Project>
       <Name>Unity.Burst.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Animation.Rigging.Editor.csproj">
+      <Project>{6CD2AE83-0262-FE14-E4E8-C958481F2E23}</Project>
+      <Name>Unity.Animation.Rigging.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.csproj">
       <Project>{F3EE63FF-B786-B873-048D-686B48E7FA25}</Project>
@@ -1039,6 +1051,10 @@
       <Project>{0B12FB27-81E2-F260-8A45-44950E90D120}</Project>
       <Name>Unity.ProBuilder.AssetIdRemapUtility</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.AI.Navigation.Editor.ConversionSystem.csproj">
+      <Project>{1E6F5693-8925-9601-DD2B-D735A4546DB1}</Project>
+      <Name>Unity.AI.Navigation.Editor.ConversionSystem</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VSCode.Editor.csproj">
       <Project>{DB4D5EC7-7D16-795A-AFFB-40A7B2E0EF9B}</Project>
       <Name>Unity.VSCode.Editor</Name>
@@ -1066,6 +1082,10 @@
     <ProjectReference Include="Unity.InternalAPIEditorBridge.007.csproj">
       <Project>{F1D6886C-318E-5F02-57D0-8A862FB0488C}</Project>
       <Name>Unity.InternalAPIEditorBridge.007</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Animation.Rigging.csproj">
+      <Project>{FD697521-486D-2CA1-A28B-55792977F38D}</Project>
+      <Name>Unity.Animation.Rigging</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.EditorCoroutines.Editor.csproj">
       <Project>{EEBDEBC9-C830-03FA-0BE5-08F88D84A186}</Project>
@@ -1183,6 +1203,10 @@
       <Project>{D651A20C-7B99-79F6-F0E9-91F1FD1BEE84}</Project>
       <Name>Unity.TestTools.CodeCoverage.Editor.OpenCover.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.AI.Navigation.Updater.csproj">
+      <Project>{2C19EEC7-7156-F705-B4C1-F1DA14A08413}</Project>
+      <Name>Unity.AI.Navigation.Updater</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj">
       <Project>{59D82C90-4EB2-0FD7-0766-DE1BAFA52668}</Project>
       <Name>Unity.XR.Interaction.Toolkit.Samples.StarterAssets</Name>
@@ -1210,6 +1234,10 @@
     <ProjectReference Include="Unity.Searcher.Editor.csproj">
       <Project>{871EAFE8-B593-C094-212A-0675DF21ACDD}</Project>
       <Name>Unity.Searcher.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.AI.Navigation.Editor.csproj">
+      <Project>{5EE63F87-CEED-69D4-46C5-EAABD350FBC3}</Project>
+      <Name>Unity.AI.Navigation.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.csproj">
       <Project>{E7953A0A-554C-2653-4993-6052A1A5844A}</Project>
