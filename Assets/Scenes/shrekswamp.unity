@@ -82273,14 +82273,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: journal
       objectReference: {fileID: 0}
-    - target: {fileID: 2749290428729080656, guid: 1900df4b9bcbeb14ca0ab59a016d76a3, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 2749290428729080656, guid: 1900df4b9bcbeb14ca0ab59a016d76a3, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
     - target: {fileID: 3393418231566649886, guid: 1900df4b9bcbeb14ca0ab59a016d76a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 247.54
