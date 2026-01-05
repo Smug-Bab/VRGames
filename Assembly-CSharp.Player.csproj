@@ -62,9 +62,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\sonicincrement.cs" />
     <Compile Include="Assets\Scripts\shrekhutcutscene.cs" />
+    <Compile Include="Assets\Scripts\EXIT.cs" />
     <Compile Include="Assets\Scripts\shrekcatch.cs" />
     <Compile Include="Assets\Scripts\pumpreset.cs" />
     <Compile Include="Assets\Scripts\shrekboatcutscene.cs" />
+    <Compile Include="Assets\Scripts\SonicMusic.cs" />
     <Compile Include="Assets\Scripts\knucklesincrement.cs" />
     <Compile Include="Assets\Scripts\shrekonioncollect.cs" />
     <Compile Include="Assets\Scripts\loader.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Assets\Scripts\shrekjournal.cs" />
     <Compile Include="Assets\Scripts\shrekai.cs" />
     <Compile Include="Assets\Scripts\shrekfootsteps.cs" />
+    <Compile Include="Assets\Scripts\FLOATATION.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

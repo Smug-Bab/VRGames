@@ -85,14 +85,11 @@ public class knucklesmovement : MonoBehaviour
             {
                 switch (hit.collider.tag)
                 {
-                    case "Ground/wet":
+                    case "mats/dirty":
                         audio.PlayOneShot(clips[0]);
                         break;
-                    case "Ground/wood":
+                    case "mats/metallic":
                         audio.PlayOneShot(clips[1]);
-                        break;
-                    case "Ground/metal":
-                        audio.PlayOneShot(clips[2]);
                         break;
                     default:
                         break;

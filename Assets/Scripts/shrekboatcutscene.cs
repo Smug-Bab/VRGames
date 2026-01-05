@@ -39,7 +39,7 @@ public class shrekboatcutscene : MonoBehaviour
         yield return new WaitForSeconds(4);
         puppets[1].GetComponent<AudioSource>().PlayOneShot(lines[8]);
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("shrekisland");
+        SceneManager.LoadScene("shrekswamp");
     } 
 
     public void QuitGame()

@@ -4,15 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Level/main
-  - Level/knuckles
-  - Level/shrekintro
-  - Level/shrekswamp
-  - Level/sonic
-  - Ground/wet
-  - Ground/wood
-  - Ground/metal
-  - Ground/water
+  - mats/dirty
+  - mats/wet
+  - mats/metallic
+  - mats/hard
+  - shrekintro
   layers:
   - Default
   - TransparentFX

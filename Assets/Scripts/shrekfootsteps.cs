@@ -19,7 +19,7 @@ public class ShrekFootstep : MonoBehaviour
     }
     private void OnDisable()
     {
-        joy.action.Enable();
+        joy.action.Disable();
         StopCoroutine(Footsteps());
 
     }
@@ -34,14 +34,11 @@ public class ShrekFootstep : MonoBehaviour
                 {
                     switch (hit.collider.tag)
                     {
-                        case "Ground/wet":
+                        case "mats/dirty":
                             audio.PlayOneShot(clips[0]);
                             break;
-                        case "Ground/wood":
+                        case "mats/hard":
                             audio.PlayOneShot(clips[1]);
-                            break;
-                        case "Ground/metal":
-                            audio.PlayOneShot(clips[2]);
                             break;
                         default:
                             audio.PlayOneShot(clips[0]);

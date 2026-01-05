@@ -57,16 +57,16 @@ public class sonicmovement : MonoBehaviour
             {
                 switch (hit.collider.tag)
                 {
-                    case "Ground/wet":
+                    case "mats/dirty":
                         audio.PlayOneShot(clips[0]);
                         partsysmain.startSpeed = vel / 2;
                         partsysshape.eulerAngles = new Vector3(0, (mover.leftHandMoveInput.ReadValue().x * mover.leftHandMoveInput.ReadValue().y) * 100, 0);
                         partsys.Play();
                         break;
-                    case "Ground/wood":
+                    case "mats/hard":
                         audio.PlayOneShot(clips[1]);
                         break;
-                    case "Ground/metal":
+                    case "mats/metallic":
                         audio.PlayOneShot(clips[2]);
                         break;
                     default:

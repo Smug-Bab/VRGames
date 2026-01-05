@@ -1,19 +1,19 @@
 trackSelection = true
 refreshSearchWindowsInPlayMode = false
 fetchPreview = true
-defaultFlags = 0
+defaultFlags = 264
 keepOpen = false
 queryFolder = "Assets"
 onBoardingDoNotAskAgain = true
 showPackageIndexes = false
-showStatusBar = false
+showStatusBar = true
 scopes = {
-	"picker_window_position_offset.D845A788" = "-543;188;467;550"
-	"picker_search_text.D845A788" = "move"
-	"last_search.D845A788" = "move"
+	"picker_window_position_offset.D845A788" = "-555;153;467;550"
+	"picker_search_text.D845A788" = "scale "
+	"last_search.D845A788" = "scale "
 	"OpenInspectorPreview.D845A788" = "0"
 	"currentGroup.D845A788" = "all"
-	"picker_window_position_offset.E06AA71F" = "-67;419;467;550"
+	"picker_window_position_offset.E06AA71F" = "-165;419;467;550"
 	"picker_search_text.E06AA71F" = ""
 	"last_search.E06AA71F" = ""
 	"OpenInspectorPreview.E06AA71F" = "0"
@@ -21,6 +21,9 @@ scopes = {
 	"last_search.3BE40471" = ""
 	"OpenInspectorPreview.3BE40471" = "0"
 	"currentGroup.3BE40471" = "all"
+	"last_search.310DEAF1" = "input"
+	"OpenInspectorPreview.310DEAF1" = "0"
+	"currentGroup.310DEAF1" = "settings"
 }
 providers = {
 	scene = {
@@ -72,8 +75,11 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
-	"j"
+	"s"
 	""
+	"a"
+	"m"
+	"j"
 	"1"
 ]
 searchItemFavorites = [

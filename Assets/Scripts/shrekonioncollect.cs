@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class shrekonioncollect : MonoBehaviour
 {
     [SerializeField] AudioSource audio;
     [SerializeField] shrekjournal journal;
-    [SerializeField] LayerMask layer;
     private void Start()
     {
         RaycastHit hit;
@@ -16,10 +17,10 @@ public class shrekonioncollect : MonoBehaviour
             this.transform.position = hit.point;
         }
     }
-    public void Collect()
+    private void OnTransformParentChanged()
     {
         journal.onioncount += 1;
         audio.Play();
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }
