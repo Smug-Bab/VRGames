@@ -69,7 +69,6 @@
     <Compile Include="Assets\Scripts\SonicMusic.cs" />
     <Compile Include="Assets\Scripts\knucklesincrement.cs" />
     <Compile Include="Assets\Scripts\shrekonioncollect.cs" />
-    <Compile Include="Assets\Scripts\loader.cs" />
     <Compile Include="Assets\Scripts\shrekcutsceneintro.cs" />
     <Compile Include="Assets\Scripts\shrekjournal.cs" />
     <Compile Include="Assets\Scripts\shrekai.cs" />
