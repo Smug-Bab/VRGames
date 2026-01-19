@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 206aaa8b1231a6b4588156b4edf6b5e0
+guid: c83f2f01f960ba46abfa5b4eab027788
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,48 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CARPET
-    second: {fileID: 2100000, guid: 6ba480a786c3f26479d2f9eb5dcd1555, type: 2}
+      name: Glass
+    second: {fileID: 2100000, guid: 0182d293ae5d2fd73819fcba2bdde4e5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CEIL
-    second: {fileID: 2100000, guid: d06083cc66a45674188749442ee19a6f, type: 2}
+      name: Metal
+    second: {fileID: 2100000, guid: af397a523be8e049eaa8bf7ce64d18a3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: FENCE
-    second: {fileID: 2100000, guid: 6272669feb62ea045a90b0cd13261a74, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: FLOOR
-    second: {fileID: 2100000, guid: 09d8ea8220bf96141b98273f366abfc9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: GRASS
-    second: {fileID: 2100000, guid: e9e4a6d1dea9e6f458a68abe9c3acc27, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: LOCKER
-    second: {fileID: 2100000, guid: a7ce94592e3914f45a67d0a3f2ae8f84, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: SKY
-    second: {fileID: 2100000, guid: b8e29d8c2faa734419376755296f34c3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: TABLE
-    second: {fileID: 2100000, guid: ef2f980f1ffc8534cbc9b5405b36a860, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: WALL
-    second: {fileID: 2100000, guid: 488f599aa4bc25d469b6e2e517f3bfb1, type: 2}
+      name: Sign
+    second: {fileID: 2100000, guid: 9ac6e3a163405079ab40839cb2a397df, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
