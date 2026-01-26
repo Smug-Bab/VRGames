@@ -243,16 +243,6 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
-    "com.unity.visualscripting": {
-      "version": "1.9.1",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.ugui": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.xr.core-utils": {
       "version": "2.4.0",
       "depth": 1,
@@ -311,12 +301,12 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.openxr": {
-      "version": "1.14.1",
-      "depth": 0,
+      "version": "1.9.1",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.inputsystem": "1.6.3",
-        "com.unity.xr.core-utils": "2.3.0",
+        "com.unity.xr.core-utils": "2.1.1",
         "com.unity.xr.management": "4.4.0",
         "com.unity.xr.legacyinputhelpers": "2.1.2"
       },

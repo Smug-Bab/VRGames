@@ -24,6 +24,9 @@ scopes = {
 	"last_search.310DEAF1" = "input"
 	"OpenInspectorPreview.310DEAF1" = "0"
 	"currentGroup.310DEAF1" = "settings"
+	"last_search.110DE9E9" = "find:"
+	"OpenInspectorPreview.110DE9E9" = "0"
+	"currentGroup.110DE9E9" = "scene"
 }
 providers = {
 	scene = {
@@ -75,8 +78,10 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
-	"s"
+	"find:"
+	"p: dir=\"Sanctums\" "
 	""
+	"s"
 	"a"
 	"m"
 	"j"
@@ -89,9 +94,9 @@ showSavedSearchPanel = false
 hideTabs = false
 expandedQueries = [
 ]
-queryBuilder = false
+queryBuilder = true
 ignoredProperties = "id;name;classname;imagecontentshash"
-helperWidgetCurrentArea = "all"
+helperWidgetCurrentArea = "find:"
 disabledIndexers = ""
 minIndexVariations = 2
 findProviderIndexHelper = true
