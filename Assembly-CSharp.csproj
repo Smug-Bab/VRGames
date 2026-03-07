@@ -64,21 +64,23 @@
     <Analyzer Include="/home/smugbab/Unity/Hub/Editor/2022.3.13f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Scripts/sonicincrement.cs" />
-    <Compile Include="Assets/Scripts/shrekhutcutscene.cs" />
-    <Compile Include="Assets/Scripts/EXIT.cs" />
-    <Compile Include="Assets/Scripts/sonicmusic.cs" />
-    <Compile Include="Assets/Scripts/shrekcatch.cs" />
-    <Compile Include="Assets/Scripts/pumpreset.cs" />
-    <Compile Include="Assets/Scripts/shrekboatcutscene.cs" />
-    <Compile Include="Assets/Scripts/knucklesincrement.cs" />
-    <Compile Include="Assets/Scripts/shrekonioncollect.cs" />
-    <Compile Include="Assets/Scripts/shrekcutsceneintro.cs" />
-    <Compile Include="Assets/Scripts/BALDICRASH.cs" />
-    <Compile Include="Assets/Scripts/shrekjournal.cs" />
-    <Compile Include="Assets/Scripts/shrekai.cs" />
-    <Compile Include="Assets/Scripts/shrekfootsteps.cs" />
-    <Compile Include="Assets/Scripts/FLOATATION.cs" />
+    <Compile Include="Assets/Scripts/Main/FLOATATION.cs" />
+    <Compile Include="Assets/Scripts/Shrek/shrekjournal.cs" />
+    <Compile Include="Assets/Scripts/Shrek/shrekcatch.cs" />
+    <Compile Include="Assets/Scripts/Shrek/shrekfootsteps.cs" />
+    <Compile Include="Assets/Scripts/Sonic&amp;Knuckles/pumpreset.cs" />
+    <Compile Include="Assets/Scripts/Shrek/shrekai.cs" />
+    <Compile Include="Assets/Scripts/Sonic&amp;Knuckles/sonicmusic.cs" />
+    <Compile Include="Assets/Scripts/Sanctumns/JDAI.cs" />
+    <Compile Include="Assets/Scripts/Shrek/shrekcutsceneintro.cs" />
+    <Compile Include="Assets/Scripts/BALDI/BALDICRASH.cs" />
+    <Compile Include="Assets/Scripts/Sonic&amp;Knuckles/sonicincrement.cs" />
+    <Compile Include="Assets/Scripts/Sanctumns/JDPartData.cs" />
+    <Compile Include="Assets/Scripts/Shrek/shrekonioncollect.cs" />
+    <Compile Include="Assets/Scripts/Main/MainWatch.cs" />
+    <Compile Include="Assets/Scripts/Shrek/shrekhutcutscene.cs" />
+    <Compile Include="Assets/Scripts/Sonic&amp;Knuckles/knucklesincrement.cs" />
+    <Compile Include="Assets/Scripts/Shrek/shrekboatcutscene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class BALDICRASH : MonoBehaviour
 {
+    void OnTriggerEnter(Collider other)
+    {
+        
+    }
 }
