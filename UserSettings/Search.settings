@@ -1,55 +1,56 @@
 trackSelection = true
 refreshSearchWindowsInPlayMode = false
+pickerAdvancedUI = false
 fetchPreview = true
-defaultFlags = 264
-keepOpen = false
+defaultFlags = 0
+keepOpen = true
 queryFolder = "Assets"
 onBoardingDoNotAskAgain = true
 showPackageIndexes = false
-showStatusBar = true
+showStatusBar = false
 scopes = {
-	"picker_window_position_offset.D845A788" = "-555;153;467;550"
-	"picker_search_text.D845A788" = "scale "
-	"last_search.D845A788" = "scale "
-	"OpenInspectorPreview.D845A788" = "0"
-	"currentGroup.D845A788" = "all"
-	"picker_window_position_offset.E06AA71F" = "-165;419;467;550"
-	"picker_search_text.E06AA71F" = ""
-	"last_search.E06AA71F" = ""
-	"OpenInspectorPreview.E06AA71F" = "0"
-	"currentGroup.E06AA71F" = "all"
-	"last_search.3BE40471" = ""
-	"OpenInspectorPreview.3BE40471" = "0"
-	"currentGroup.3BE40471" = "all"
-	"last_search.310DEAF1" = "input"
-	"OpenInspectorPreview.310DEAF1" = "0"
-	"currentGroup.310DEAF1" = "settings"
-	"last_search.110DE9E9" = "find:"
-	"OpenInspectorPreview.110DE9E9" = "0"
-	"currentGroup.110DE9E9" = "scene"
+	"picker_window_position_offset.00000000" = "17;-63;320;550"
+	"picker_visibility_flags.00000000" = "0"
+	"picker_item_size.00000000" = "1"
+	"picker_inspector.00000000" = "0"
 }
 providers = {
-	scene = {
-		active = true
-		priority = 50
-		defaultAction = null
-	}
 	asset = {
 		active = true
 		priority = 25
 		defaultAction = null
 	}
-	log = {
+	scene = {
+		active = true
+		priority = 50
+		defaultAction = null
+	}
+	adb = {
 		active = false
-		priority = 210
+		priority = 2500
+		defaultAction = null
+	}
+	presets_provider = {
+		active = false
+		priority = -10
+		defaultAction = null
+	}
+	find = {
+		active = true
+		priority = 25
 		defaultAction = null
 	}
 	packages = {
-		active = true
+		active = false
 		priority = 90
 		defaultAction = null
 	}
 	performance = {
+		active = false
+		priority = 100
+		defaultAction = null
+	}
+	store = {
 		active = false
 		priority = 100
 		defaultAction = null
@@ -59,44 +60,31 @@ providers = {
 		priority = 100
 		defaultAction = null
 	}
-	adb = {
+	log = {
 		active = false
-		priority = 2500
-		defaultAction = null
-	}
-	store = {
-		active = true
-		priority = 100
-		defaultAction = null
-	}
-	find = {
-		active = true
-		priority = 25
+		priority = 210
 		defaultAction = null
 	}
 }
 objectSelectors = {
 }
 recentSearches = [
-	"find:"
-	"p: dir=\"Sanctums\" "
-	""
-	"s"
-	"a"
-	"m"
-	"j"
-	"1"
+	"camera"
 ]
 searchItemFavorites = [
 ]
 savedSearchesSortOrder = 0
 showSavedSearchPanel = false
 hideTabs = false
+indexOnEditorStartup = true
+logIndexingPerformanceReport = false
 expandedQueries = [
 ]
 queryBuilder = true
-ignoredProperties = "id;name;classname;imagecontentshash"
-helperWidgetCurrentArea = "find:"
+ignoredProperties = "addedobjectfileids;classname;correspondingsourceobject;editorclassidentifier;editorhideflags;fileid;gameobject;id;imagecontentshash;isprefabvariant;name;objecthideflags;pathid;prefabasset;prefabinstance;script"
+helperWidgetCurrentArea = "all"
 disabledIndexers = ""
 minIndexVariations = 2
 findProviderIndexHelper = true
+itemIconSize = 32
+version = 1
