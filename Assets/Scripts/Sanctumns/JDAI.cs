@@ -21,31 +21,7 @@ public class sanctumnJDAI : MonoBehaviour
     private void FixedUpdate() 
     {
         nav.SetDestination(player.transform.position);
-        JD.transform.eulerAngles = new Vector3(JD.transform.eulerAngles.x, JD.transform.eulerAngles.y, nav.speed * 3);
-        JD.transform.GetChild(0).LookAt(player.transform);
     }
-
-    //Particle Control
-    void OnTriggerEnter(Collider other)
-    {
-        JD.SetActive(true);
-        InfectPartSys.SetActive(true);
-        source.Play();
-        player.GetComponent<AudioSource>().Stop();
-    }
-    void OnTriggerExit(Collider other)
-    {
-        JD.SetActive(false);
-        nav.speed = 0.5f;
-        anim.speed = 0.2f;
-        InfectPartSys.SetActive(false);
-        RenderSettings.fogEndDistance = fogDefDistance;
-        source.Stop();
-        player.GetComponent<AudioSource>().Play();
-    }
-
-
-
     void OnTriggerStay(Collider other)
     {
         // Fog
@@ -64,35 +40,48 @@ public class sanctumnJDAI : MonoBehaviour
         switch (dist)
         {
         case 100:
+        JD.SetActive(true);
         nav.speed = 1f;
         anim.speed = 0.4f;
+        InfectPartSys.SetActive(true);
         source.Stop();
-        source.clip = clips[0];
-        source.Play();
+        source.PlayOneShot(clips[0]);
+        player.GetComponent<AudioSource>().Stop();
             break;
+
         case 75:
         nav.speed = 2f;
         anim.speed = 0.7f;
-        source.Stop();
-        source.clip = clips[1];
-        source.Play();
+        source.PlayOneShot(clips[1]);
             break;
+            
         case 45:
         nav.speed = 3f;
         anim.speed = 0.9f;
         source.Stop();
-        source.clip = clips[2];
-        source.Play();
+        source.PlayOneShot(clips[2]);
             break;
+
         case 20:
         nav.speed = 4f;
         anim.speed = 1.2f;
         source.Stop();
-        source.clip = clips[3];
-        source.Play();
+        source.PlayOneShot(clips[3]);
             break;
+
         default:
             break;
+
+        }
+        void OnTriggerExit(Collider other)
+        {
+        JD.SetActive(false);
+        nav.speed = 0.5f;
+        anim.speed = 0.2f;
+        InfectPartSys.SetActive(false);
+        RenderSettings.fogEndDistance = fogDefDistance;
+        source.Stop();
+        player.GetComponent<AudioSource>().Play();
         }
     }
 }

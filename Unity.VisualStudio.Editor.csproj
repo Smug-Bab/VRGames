@@ -57,8 +57,8 @@
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@dc1ddd4f09b6/Editor/Messaging/MessageType.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@dc1ddd4f09b6/Editor/Cli.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@dc1ddd4f09b6/Editor/Image.cs" />
-    <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@dc1ddd4f09b6/Editor/Messaging/Deserializer.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@dc1ddd4f09b6/Editor/Messaging/MessageEventArgs.cs" />
+    <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@dc1ddd4f09b6/Editor/Messaging/Deserializer.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@dc1ddd4f09b6/Editor/VisualStudioInstallation.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@dc1ddd4f09b6/Editor/FileUtility.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@dc1ddd4f09b6/Editor/ProjectGeneration/ProjectGeneration.cs" />

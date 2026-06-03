@@ -1,93 +1,72 @@
+using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
-using UnityEngine;
 
-public class sonicmovement : MonoBehaviour
+public class SonicIncrement : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] XRPlayerMovement mover;
-    [SerializeField] Rigidbody rigid;
-    [SerializeField] Collider coll;
-    [SerializeField] AudioSource audio;
+    [SerializeField] Rigidbody rb;
+    [SerializeField] Collider col;
     [SerializeField] AudioClip[] clips;
-    [SerializeField] float frequency;
-    public float incre;
-    public float dist;
-    public float maxspeed;
-    public ParticleSystem partsys;
-    public ParticleSystem.MainModule partsysmain;
-    public Transform partsysshape;
-    private float startspeed;
-    private float timerstep;
-    private void Start()
-    {
-        var startspeed = mover.mult;
-        partsysmain = partsys.main;
-    }
-    private void FixedUpdate()
-    {
-        RaycastHit hit;
-        if (!Vector2.Equals(mover.PrimaryJoy.ReadValue<Vector2>(), Vector2.zero))
-        {
-            if (Physics.Raycast(player.transform.position, player.transform.TransformDirection(Vector3.down), out hit, dist))
-            {
-                player.transform.position = hit.point + (hit.normal * coll.bounds.extents.y);
-                player.transform.up = Vector3.Lerp(player.transform.up, hit.normal, 8f * Time.fixedDeltaTime);
-                rigid.useGravity = false;
-            } else
-            {
-                player.transform.up = Vector3.Lerp(player.transform.up, Vector3.up, 4f * Time.fixedDeltaTime);
-                rigid.useGravity = true;
-            }
-            mover.mult += incre;
-            Footsteps();
+    [SerializeField] float inc = 1f;
+    [SerializeField] float ld = 4f;
+    [SerializeField] float dist = 1f;
+    [SerializeField] AudioSource audio;
+    [SerializeField] ParticleSystem ps;
+    [SerializeField] Transform pt;
 
+    ParticleSystem.MainModule pm;
+    Vector2 joy;
+    RaycastHit hit;
+
+    void Start() => pm = ps.main;
+
+    void FixedUpdate()
+    {
+        joy = mover.PrimaryJoy.ReadValue<Vector2>();
+        StartCoroutine(SpeedSlopeManager(joy));
+    }
+    IEnumerator SpeedSlopeManager(Vector2 joy)
+    {
+        if (Physics.Raycast(player.transform.position, player.transform.TransformDirection(Vector3.down), out hit, dist) && joy != Vector2.zero)
+        {
+            player.transform.position = hit.point + hit.normal * col.bounds.extents.y;
+            player.transform.up = Vector3.Lerp(player.transform.up, hit.normal, 8f * Time.fixedDeltaTime);
+            rb.useGravity = false;
+            rb.linearDamping = ld;
+            mover.mult += inc;
         }
         else
         {
             player.transform.up = Vector3.Lerp(player.transform.up, Vector3.up, 20f * Time.fixedDeltaTime);
-            rigid.useGravity = true;
-            mover.mult = (int)(rigid.linearVelocity.magnitude * 100);
-            partsys.Stop();
-            timerstep = (float)0.02;
+            rb.useGravity = true;
+            rb.linearDamping = 0f;
+            mover.mult = (int)(rb.linearVelocity.magnitude * 10f);
+            ps.Stop();
         }
+        yield return new WaitForSeconds(0.1f);
     }
-    private void Footsteps()
+    IEnumerator FootstepManager()
     {
-        if ((rigid.linearVelocity.magnitude < 0.5) || Vector2.Equals(mover.PrimaryJoy.ReadValue<Vector2>(), Vector2.zero)) return;
-        var vel = rigid.linearVelocity.magnitude;
-        timerstep -= Time.fixedDeltaTime;
-        if (timerstep < 0)
-        {
-            if (Physics.Raycast(rigid.transform.position + new Vector3(0, (float)0.2, 0), Vector3.down, out RaycastHit hit, 1))
+        switch (hit.collider.tag)
             {
-                switch (hit.collider.tag)
-                {
-                    case "mats/dirty":
-                        audio.PlayOneShot(clips[0]);
-                        partsysmain.startSpeed = vel / 2;
-                        partsysshape.eulerAngles = new Vector3(0, mover.PrimaryJoy.ReadValue<Vector2>().x * mover.PrimaryJoy.ReadValue<Vector2>().y * 100, 0);
-                        partsys.Play();
-                        break;
-                    case "mats/hard":
-                        audio.PlayOneShot(clips[1]);
-                        break;
-                    case "mats/metallic":
-                        audio.PlayOneShot(clips[2]);
-                        break;
-                    default:
-                        audio.PlayOneShot(clips[0]);
-                        break;
-                }
+                case "mats/dirty":
+                    audio.PlayOneShot(clips[0]);
+                    pm.startSpeed = rb.linearVelocity.magnitude * 0.5f;
+                    pt.eulerAngles = new Vector3(0f, joy.x * joy.y * 100f, 0f);
+                    ps.Play();
+                    break;
+                case "mats/hard":
+                    audio.PlayOneShot(clips[1]);
+                    break;
+                case "mats/metallic":
+                    audio.PlayOneShot(clips[2]);
+                    break;
+                default:
+                    audio.PlayOneShot(clips[0]);
+                    break;
             }
-            if (vel < 1)
-            {
-                timerstep = frequency / (vel * 5);
-            }
-            else
-            {
-                timerstep = frequency / vel;
-            }
-        }
+        yield return null;
     }
 }
