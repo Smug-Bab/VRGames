@@ -59,6 +59,7 @@
     <Compile Include="Assets/Scripts/nulllands/maze.cs" />
     <Compile Include="Assets/Scripts/Main/PLACEHOLDERMovementScript.cs" />
     <Compile Include="Assets/Scripts/Sonic&amp;Knuckles/sonicincrement.cs" />
+    <Compile Include="Assets/Scripts/scp/scpLCmaze.cs" />
     <Compile Include="Assets/Scripts/Main/MainWatch.cs" />
     <Compile Include="Assets/Scripts/Sonic&amp;Knuckles/sonicjump.cs" />
     <Compile Include="Assets/Scripts/Shrek/shrekboatcutscene.cs" />

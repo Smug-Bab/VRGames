@@ -205,19 +205,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e873e7086bab2cbf59eefee1c78097f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  p: {fileID: 1342171308}
-  s: 0.1
-  n: 16
-  r: 3
-  m: {fileID: 2100000, guid: 09457b51762bad945bd532ea9c6d430b, type: 2}
-  hs: 20
-  ho: 0
-  ns: 0.05
-  oc: 4
-  pers: 0.5
-  lac: 2
-  mt: 1
-  maxPerFrame: 2
+  playerTransform: {fileID: 1342171308}
+  voxelSize: 0.1
+  chunkSize: 16
+  renderDistance: 3
+  voxelMaterial: {fileID: 0}
+  heightScale: 20
+  heightOffset: 0
+  noiseScale: 0.05
+  octaves: 4
+  persistence: 0.5
+  lacunarity: 2
+  useMultithreading: 1
+  maxChunksPerFrame: 2
 --- !u!4 &361502223
 Transform:
   m_ObjectHideFlags: 0
