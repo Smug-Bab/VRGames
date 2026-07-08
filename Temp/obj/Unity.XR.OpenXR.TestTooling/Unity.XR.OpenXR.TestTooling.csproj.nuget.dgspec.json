@@ -1,0 +1,1836 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.TestTooling.csproj": {}
+  },
+  "projects": {
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.Burst.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.Burst.csproj",
+        "projectName": "Unity.Burst",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Burst.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.Burst/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.Collections.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.Collections.csproj",
+        "projectName": "Unity.Collections",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Collections.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.Collections/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Burst.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Burst.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj",
+        "projectName": "Unity.InputSystem",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.InputSystem/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.InternalAPIEngineBridge.RenderPipelines.Core.Runtime.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.InternalAPIEngineBridge.RenderPipelines.Core.Runtime.Shared.csproj",
+        "projectName": "Unity.InternalAPIEngineBridge.RenderPipelines.Core.Runtime.Shared",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.InternalAPIEngineBridge.RenderPipelines.Core.Runtime.Shared.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.InternalAPIEngineBridge.RenderPipelines.Core.Runtime.Shared/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj",
+        "projectName": "Unity.Mathematics",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.Mathematics/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.PathTracing.Runtime.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.PathTracing.Runtime.csproj",
+        "projectName": "Unity.PathTracing.Runtime",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.PathTracing.Runtime.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.PathTracing.Runtime/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Collections.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Collections.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.UnifiedRayTracing.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.UnifiedRayTracing.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipeline.Universal.ShaderLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipeline.Universal.ShaderLibrary.csproj",
+        "projectName": "Unity.RenderPipeline.Universal.ShaderLibrary",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipeline.Universal.ShaderLibrary.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.RenderPipeline.Universal.ShaderLibrary/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.Shared.csproj",
+        "projectName": "Unity.RenderPipelines.Core.Runtime.Shared",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.Shared.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.RenderPipelines.Core.Runtime.Shared/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.InternalAPIEngineBridge.RenderPipelines.Core.Runtime.Shared.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.InternalAPIEngineBridge.RenderPipelines.Core.Runtime.Shared.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj",
+        "projectName": "Unity.RenderPipelines.Core.Runtime",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.RenderPipelines.Core.Runtime/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Burst.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Burst.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Collections.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Collections.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.GPUDriven.Runtime.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.GPUDriven.Runtime.csproj",
+        "projectName": "Unity.RenderPipelines.GPUDriven.Runtime",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.GPUDriven.Runtime.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.RenderPipelines.GPUDriven.Runtime/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Burst.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Burst.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Collections.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Collections.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Universal.Config.Runtime.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Universal.Config.Runtime.csproj",
+        "projectName": "Unity.RenderPipelines.Universal.Config.Runtime",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Universal.Config.Runtime.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.RenderPipelines.Universal.Config.Runtime/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Universal.Runtime.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Universal.Runtime.csproj",
+        "projectName": "Unity.RenderPipelines.Universal.Runtime",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Universal.Runtime.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.RenderPipelines.Universal.Runtime/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Burst.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Burst.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.PathTracing.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.PathTracing.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipeline.Universal.ShaderLibrary.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipeline.Universal.ShaderLibrary.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.Shared.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.Shared.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.GPUDriven.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.GPUDriven.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Universal.Config.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Universal.Config.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.SurfaceCache.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.SurfaceCache.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.UnifiedRayTracing.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.UnifiedRayTracing.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.SurfaceCache.Runtime.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.SurfaceCache.Runtime.csproj",
+        "projectName": "Unity.SurfaceCache.Runtime",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.SurfaceCache.Runtime.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.SurfaceCache.Runtime/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.PathTracing.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.PathTracing.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Core.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.UnifiedRayTracing.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.UnifiedRayTracing.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.UnifiedRayTracing.Runtime.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.UnifiedRayTracing.Runtime.csproj",
+        "projectName": "Unity.UnifiedRayTracing.Runtime",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.UnifiedRayTracing.Runtime.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.UnifiedRayTracing.Runtime/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Burst.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Burst.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Collections.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Collections.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.Mathematics.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.CoreUtils.Editor.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.CoreUtils.Editor.csproj",
+        "projectName": "Unity.XR.CoreUtils.Editor",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.CoreUtils.Editor.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.XR.CoreUtils.Editor/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.CoreUtils.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.CoreUtils.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.TestRunner.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.TestRunner.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.TestRunner.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.TestRunner.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.CoreUtils.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.CoreUtils.csproj",
+        "projectName": "Unity.XR.CoreUtils",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.CoreUtils.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.XR.CoreUtils/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.SpatialTracking.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.SpatialTracking.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.Editor.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.Editor.csproj",
+        "projectName": "Unity.XR.Management.Editor",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.Editor.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.XR.Management.Editor/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.CoreUtils.Editor.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.CoreUtils.Editor.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.TestRunner.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.TestRunner.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.TestRunner.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.TestRunner.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.csproj",
+        "projectName": "Unity.XR.Management",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.XR.Management/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.Editor.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.Editor.csproj",
+        "projectName": "Unity.XR.OpenXR.Editor",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.Editor.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.XR.OpenXR.Editor/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.CoreUtils.Editor.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.CoreUtils.Editor.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.Editor.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.Editor.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.TestRunner.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.TestRunner.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.TestRunner.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.TestRunner.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.Features.MockRuntime.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.Features.MockRuntime.csproj",
+        "projectName": "Unity.XR.OpenXR.Features.MockRuntime",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.Features.MockRuntime.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.XR.OpenXR.Features.MockRuntime/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.Editor.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.Editor.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.TestTooling.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.TestTooling.csproj",
+        "projectName": "Unity.XR.OpenXR.TestTooling",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.TestTooling.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.XR.OpenXR.TestTooling/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.Editor.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.Editor.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.Editor.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.Editor.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.Features.MockRuntime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.Features.MockRuntime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.csproj",
+        "projectName": "Unity.XR.OpenXR",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.OpenXR.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/Unity.XR.OpenXR/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.InputSystem.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Universal.Runtime.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.RenderPipelines.Universal.Runtime.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.Editor.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.Editor.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/Unity.XR.Management.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.TestRunner.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.TestRunner.csproj",
+        "projectName": "UnityEditor.TestRunner",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.TestRunner.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/UnityEditor.TestRunner/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.TestRunner.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.TestRunner.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj",
+        "projectName": "UnityEditor.UI",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/UnityEditor.UI/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.TestRunner.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.TestRunner.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.TestRunner.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.TestRunner.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.SpatialTracking.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.SpatialTracking.csproj",
+        "projectName": "UnityEngine.SpatialTracking",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.SpatialTracking.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/UnityEngine.SpatialTracking/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEditor.UI.csproj"
+              },
+              "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+                "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.TestRunner.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.TestRunner.csproj",
+        "projectName": "UnityEngine.TestRunner",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.TestRunner.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/UnityEngine.TestRunner/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj",
+        "projectName": "UnityEngine.UI",
+        "projectPath": "/home/smugbab/Desktop/Projects/VRGames/UnityEngine.UI.csproj",
+        "packagesPath": "/home/smugbab/.nuget/packages/",
+        "outputPath": "/home/smugbab/Desktop/Projects/VRGames/Temp/obj/UnityEngine.UI/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/smugbab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -4,18 +4,18 @@ using UnityEngine.InputSystem;
 public class drone : MonoBehaviour
 {
     [Header("Movement")]
-    public float maxForwardSpeed = 5f; // units per second
-    public float turnSpeed = 90f;      // degrees per second for full input
+    public float maxForwardSpeed = 5f; 
+    public float turnSpeed = 90f;      
 
     [Header("Audio")]
     [SerializeField] private AudioSource engineAudio;
     [SerializeField] private float minEngineVolume = 0.05f;
     [SerializeField] private float maxEngineVolume = 1f;
-    [SerializeField] private float engineVolumeSmooth = 5f; // higher = snappier
+    [SerializeField] private float engineVolumeSmooth = 5f; 
 
     [Header("Input (Input System)")]
-    public InputAction forwardAction; // positive = forward, negative = backward
-    public InputAction rotateAction;  // positive = rotate right, negative = rotate left
+    public InputAction forwardAction; 
+    public InputAction rotateAction;  
 
     void OnEnable()
     {
@@ -34,17 +34,17 @@ public class drone : MonoBehaviour
         float forward = ReadAxis(forwardAction, Axis.Forward);
         float rotate = ReadAxis(rotateAction, Axis.Rotate);
 
-        // Kinematic movement: forward moves forward, left/right rotate the player
+        
         transform.position += transform.forward * forward * maxForwardSpeed * Time.deltaTime;
         transform.Rotate(0f, rotate * turnSpeed * Time.deltaTime, 0f, Space.Self);
     }
 
-    // Simpler: update audio volume in FixedUpdate based on input magnitude
+    
     void FixedUpdate()
     {
         if (engineAudio == null) return;
         float forward = ReadAxis(forwardAction, Axis.Forward);
-        float speedRatio = Mathf.Clamp01(Mathf.Abs(forward)); // 0..1 relative input
+        float speedRatio = Mathf.Clamp01(Mathf.Abs(forward)); 
         engineAudio.volume = Mathf.Lerp(minEngineVolume, maxEngineVolume, speedRatio);
         if (!engineAudio.isPlaying) engineAudio.Play();
     }
@@ -61,11 +61,11 @@ public class drone : MonoBehaviour
             }
             catch
             {
-                // fall through to keyboard fallback
+                
             }
         }
 
-        // Keyboard fallback: forward/back = W/S or Up/Down, rotate = A/D
+        
         var kb = Keyboard.current;
         if (kb == null) return 0f;
 
@@ -77,7 +77,7 @@ public class drone : MonoBehaviour
             if (back && !fwd) return -1f;
             return 0f;
         }
-        else // Rotate
+        else 
         {
             bool left = kb.aKey.isPressed;
             bool right = kb.dKey.isPressed;

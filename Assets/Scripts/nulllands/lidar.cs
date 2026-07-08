@@ -20,7 +20,7 @@ public class lidar : MonoBehaviour
 
     private Camera mainCamera;
     private float raycastDistance;
-    // Combined marks
+    
     private GameObject marksParent;
     private Mesh combinedMesh;
     private Material markMaterial;
@@ -55,12 +55,12 @@ public class lidar : MonoBehaviour
 
         lastFireTime = Time.time;
 
-        // play a one-shot sound when shooting begins
+        
         if (sfxSource != null)
         {
             sfxSource.PlayOneShot(sfxSource.clip);
         }
-        // Update raycast distance from camera's far clip plane
+        
         if (mainCamera != null)
         {
             raycastDistance = mainCamera.farClipPlane;
@@ -70,7 +70,7 @@ public class lidar : MonoBehaviour
 
         for (int i = 0; i < raycastCount; i++)
         {
-            // Generate uniformly distributed direction on a sphere
+            
             float theta = Random.Range(0f, 360f) * Mathf.Deg2Rad;
             float phi = Random.Range(0f, raycastSpread) * Mathf.Deg2Rad;
             
@@ -81,7 +81,7 @@ public class lidar : MonoBehaviour
             Vector3 randomDirection = new Vector3(x, y, z);
             randomDirection = Quaternion.LookRotation(transform.forward) * randomDirection;
             
-            // Cast ray
+            
             if (Physics.Raycast(transform.position, randomDirection, out RaycastHit hit, raycastDistance))
             {
                 MarkHitPoint(hit.point, hit.normal);
@@ -91,7 +91,7 @@ public class lidar : MonoBehaviour
 
     void MarkHitPoint(Vector3 hitPoint, Vector3 hitNormal)
     {
-        // Add quad to combined mesh so all marks are one GameObject
+        
         if (combinedMesh == null) EnsureMarksParent();
         AddQuad(hitPoint + hitNormal * 0.001f, hitNormal, markSize);
     }
@@ -104,7 +104,7 @@ public class lidar : MonoBehaviour
             return;
         }
         marksParent = new GameObject("RaycastMarks");
-        // place marks container at world root so marks remain in world space
+        
         marksParent.transform.SetParent(null);
         marksParent.transform.position = Vector3.zero;
         marksParent.transform.rotation = Quaternion.identity;
@@ -130,16 +130,16 @@ public class lidar : MonoBehaviour
 
     void AddQuad(Vector3 center, Vector3 normal, float size)
     {
-        // orientation: quad +Z faces opposite the surface normal
+        
         Quaternion rot = Quaternion.LookRotation(-normal);
         Vector3 up = rot * Vector3.up;
         Vector3 right = rot * Vector3.right;
         float half = size * 0.5f;
 
-        Vector3 v0 = center + (-right + up) * half; // top-left
-        Vector3 v1 = center + (right + up) * half;  // top-right
-        Vector3 v2 = center + (right - up) * half;  // bottom-right
-        Vector3 v3 = center + (-right - up) * half; // bottom-left
+        Vector3 v0 = center + (-right + up) * half; 
+        Vector3 v1 = center + (right + up) * half;  
+        Vector3 v2 = center + (right - up) * half;  
+        Vector3 v3 = center + (-right - up) * half; 
 
         int i = verts.Count;
         verts.Add(v0);

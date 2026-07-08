@@ -4,23 +4,49 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-public class shrekonioncollect : MonoBehaviour
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(XRGrabInteractable))]
+public class ShrekOnionCollect : MonoBehaviour
 {
-    [SerializeField] AudioSource audio;
-    [SerializeField] shrekjournal journal;
+    [SerializeField] private shrekjournal journal;
+    [SerializeField] private AudioClip collectSound;
+    
+    private AudioSource audioSource;
+    private XRGrabInteractable grabInteractable;
+
     private void Start()
     {
-        RaycastHit hit;
-        audio = this.GetComponent<AudioSource>();
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 100))
+        audioSource = GetComponent<AudioSource>();
+        grabInteractable = GetComponent<XRGrabInteractable>();
+
+        
+        grabInteractable.selectEntered.AddListener(OnOnionGrabbed);
+
+        
+        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 100))
         {
-            this.transform.position = hit.point;
+            transform.position = hit.point;
         }
     }
-    private void OnTransformParentChanged()
+
+    private void OnDestroy()
     {
-        journal.onioncount += 1;
-        audio.Play();
-        Destroy(this.gameObject);
+        if (grabInteractable != null)
+        {
+            grabInteractable.selectEntered.RemoveListener(OnOnionGrabbed);
+        }
+    }
+
+    private void OnOnionGrabbed(SelectEnterEventArgs args)
+    {
+        if (journal != null)
+        {
+            journal.onioncount += 1;
+        }
+        if (audioSource != null && collectSound != null)
+        {
+            AudioSource.PlayClipAtPoint(collectSound, transform.position);
+        }
+        Destroy(gameObject);
     }
 }

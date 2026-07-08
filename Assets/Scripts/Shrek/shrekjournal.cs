@@ -33,4 +33,8 @@ public class shrekjournal : MonoBehaviour
     {
         anim.Play("shrekjournalclose");
     }
+    void Update()
+    {
+        counter.text = onioncount.ToString();
+    }
 }

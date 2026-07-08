@@ -55,7 +55,7 @@ public class knucklesglider : MonoBehaviour
     {
         while (palm >= 2)
         {
-            glideForce += PlayerSpeed.mult + 1f;
+            glideForce += PlayerSpeed.moveSpeed + 1f;
             rigid.AddForce(transform.forward * glideForce);
             yield return null;
         }

@@ -24,7 +24,7 @@ public class SonicIncrement : MonoBehaviour
 
     void FixedUpdate()
     {
-        joy = mover.PrimaryJoy.ReadValue<Vector2>();
+        joy = mover.moveAction.ReadValue<Vector2>();
         StartCoroutine(SpeedSlopeManager(joy));
     }
     IEnumerator SpeedSlopeManager(Vector2 joy)
@@ -35,14 +35,14 @@ public class SonicIncrement : MonoBehaviour
             player.transform.up = Vector3.Lerp(player.transform.up, hit.normal, 8f * Time.fixedDeltaTime);
             rb.useGravity = false;
             rb.linearDamping = ld;
-            mover.mult += inc;
+            mover.moveSpeed += inc;
         }
         else
         {
             player.transform.up = Vector3.Lerp(player.transform.up, Vector3.up, 20f * Time.fixedDeltaTime);
             rb.useGravity = true;
             rb.linearDamping = 0f;
-            mover.mult = (int)(rb.linearVelocity.magnitude * 10f);
+            mover.moveSpeed = (int)(rb.linearVelocity.magnitude * 10f);
             ps.Stop();
         }
         yield return new WaitForSeconds(0.1f);

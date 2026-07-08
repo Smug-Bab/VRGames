@@ -1,26 +1,29 @@
-using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody))]
 public class XRPlayerTurn : MonoBehaviour
 {
-    [SerializeField] InputAction SecondaryJoy;
-    [SerializeField] Rigidbody PlayerBody;
-    [SerializeField] float mult = 10f;
-    [SerializeField] ForceMode forceMode = ForceMode.Force;
-    void OnEnable()
+    public Rigidbody rb;
+    [SerializeField] private float rotationSpeed = 100f;
+    [SerializeField] private InputAction rotationAction;
+
+    private float rotationInput;
+    private void OnEnable()
     {
-        SecondaryJoy.Enable();
+        rotationAction.Enable();
+        rotationAction.performed += ctx => rotationInput = ctx.ReadValue<Vector2>().x;
+        rotationAction.canceled += ctx => rotationInput = 0f;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
-        SecondaryJoy.Disable();
+        rotationAction.Disable();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        Vector2 input = SecondaryJoy.ReadValue<Vector2>();
-        Vector3 movement = new Vector3(0, input.x, 0);
-        PlayerBody.AddTorque(movement * mult * Time.deltaTime, forceMode);
+        float turnAngle = rotationInput * rotationSpeed * Time.fixedDeltaTime;
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, turnAngle, 0f));
     }
 }

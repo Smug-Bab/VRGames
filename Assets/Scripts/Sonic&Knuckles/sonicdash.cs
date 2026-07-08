@@ -53,7 +53,7 @@ public class sonicdash : MonoBehaviour
     IEnumerator Dash()
     {
         chargeSound.pitch = 0.1f;
-        mover.mult = charge;
+        mover.moveSpeed = charge;
         dashSound.PlayOneShot(dashSound.clip);
         yield return null;
     }
