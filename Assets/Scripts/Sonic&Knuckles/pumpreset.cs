@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class pumpreset : MonoBehaviour
 {
+    public string scene;
     private void OnTriggerExit(Collider other)
     {
         StartCoroutine(Transition());
@@ -17,6 +18,6 @@ public class pumpreset : MonoBehaviour
             RenderSettings.fogDensity += (float)0.003;
             yield return new WaitForSeconds(0.05f);
         }
-        SceneManager.LoadScene("knuckles");
+        SceneManager.LoadScene(scene);
     }
 }

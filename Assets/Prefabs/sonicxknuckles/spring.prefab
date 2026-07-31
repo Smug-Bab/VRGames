@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1460764078219569066}
   - component: {fileID: 8943247281578066987}
   - component: {fileID: 7327389890664575818}
+  - component: {fileID: 5061067322982902482}
   m_Layer: 0
   m_Name: spring
   m_TagString: Untagged
@@ -220,6 +221,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!205 &5061067322982902482
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4491608604984039429}
+  serializedVersion: 3
+  m_LocalReferencePoint: {x: 0, y: 0, z: -0.0050000018}
+  m_Size: 0.01
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.04076746
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1139315640958604231}
+  - screenRelativeHeight: 0.008570908
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1380716262740718324}
+  m_Enabled: 1
+  m_GlobalIlluminationLOD: 0
 --- !u!1 &6153421947508520281
 GameObject:
   m_ObjectHideFlags: 0

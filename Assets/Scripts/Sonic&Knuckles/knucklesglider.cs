@@ -1,63 +1,123 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;
 
-public class knucklesglider : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+public class KnucklesGlider : MonoBehaviour
 {
-    [SerializeField] private InputAction grip;
-    [SerializeField] private MonoBehaviour[] scripts;
-    [SerializeField] private Rigidbody rigid;
-    [SerializeField] private int palm = 0;
-    [SerializeField] private XRPlayerMovement PlayerSpeed;
-    [SerializeField] private float glideForce = 1f;
+    [Header("Input Actions (Triggers)")]
+    [SerializeField] private InputAction leftTrigger;
+    [SerializeField] private InputAction rightTrigger;
+
+    [Header("Hand Anchors")]
+    [SerializeField] private Transform leftHandAnchor;
+    [SerializeField] private Transform rightHandAnchor;
+
+    [Header("Gliding Settings")]
+    [SerializeField] private float glideForwardForce = 25f;
+    [SerializeField] private float glideDescentVelocity = -1.5f;
+    [SerializeField] private float descentBrakingForce = 10f;
+
+    [Header("Dynamic Glide Acceleration")]
+    [SerializeField] private float maxGlideMultiplier = 2.5f;
+    [SerializeField] private float timeToMaxGlideSpeed = 4.0f;
+
+    // Read by XRPlayerMovement
+    public bool isOverridingMovement = false;
+
+    private Rigidbody rb;
+    private bool isLeftHolding = false;
+    private bool isRightHolding = false;
+    private float glideTimer = 0f;
+
+    public bool IsGliding { get; private set; }
 
     private void Awake()
     {
-            grip.performed += OnGripPressed;
-            grip.Enable();
-            grip.canceled += OnGripReleased;
+        rb = GetComponent<Rigidbody>();
     }
 
-    private void OnDestroy()
+    private void OnEnable()
     {
-            grip.performed -= OnGripPressed;
-            grip.Disable();
-            grip.canceled -= OnGripReleased;
+        leftTrigger.performed += OnLeftTriggerPerformed;
+        leftTrigger.canceled += OnLeftTriggerCanceled;
+        rightTrigger.performed += OnRightTriggerPerformed;
+        rightTrigger.canceled += OnRightTriggerCanceled;
+
+        leftTrigger.Enable();
+        rightTrigger.Enable();
     }
 
-    private void OnGripPressed(InputAction.CallbackContext context)
+    private void OnDisable()
     {
-        ++palm;
-        foreach (MonoBehaviour script in scripts)
-        {
-            script.enabled = !script.enabled;
-        }
-        if (palm >= 2)
-        {
-            rigid.useGravity = false;
-            StartCoroutine(Glide());
-        }
+        leftTrigger.performed -= OnLeftTriggerPerformed;
+        leftTrigger.canceled -= OnLeftTriggerCanceled;
+        rightTrigger.performed -= OnRightTriggerPerformed;
+        rightTrigger.canceled -= OnRightTriggerCanceled;
+
+        leftTrigger.Disable();
+        rightTrigger.Disable();
+        isOverridingMovement = false;
     }
-        private void OnGripReleased(InputAction.CallbackContext context)
+
+    private void OnLeftTriggerPerformed(InputAction.CallbackContext ctx) { isLeftHolding = true; }
+    private void OnLeftTriggerCanceled(InputAction.CallbackContext ctx) { isLeftHolding = false; }
+    private void OnRightTriggerPerformed(InputAction.CallbackContext ctx) { isRightHolding = true; }
+    private void OnRightTriggerCanceled(InputAction.CallbackContext ctx) { isRightHolding = false; }
+
+    public void ManualFixedUpdate(XRPlayerMovement.MovementState state)
     {
-        --palm;
-        foreach (MonoBehaviour script in scripts)
+        // --- HOLD TRIGGER INPUT OVERRIDE ---
+        // Overrides whenever both actions are actively clamped down
+        if (isLeftHolding && isRightHolding)
         {
-            script.enabled = !script.enabled;
+            isOverridingMovement = true;
+
+            // Gliding movement should only calculate velocity changes while airborne
+            if (!state.isGrounded)
+            {
+                IsGliding = true;
+            }
+            else
+            {
+                IsGliding = false;
+                glideTimer = 0f;
+            }
         }
-        if (palm < 1)
+        else
         {
-            rigid.useGravity = true;
-            StopCoroutine(Glide());
+            isOverridingMovement = false;
+            IsGliding = false;
+            glideTimer = 0f;
+            return;
         }
-    }
-    private IEnumerator Glide()
-    {
-        while (palm >= 2)
+
+        if (!IsGliding) return;
+
+        // Process Gliding Force Calculations
+        glideTimer += Time.fixedDeltaTime;
+        glideTimer = Mathf.Min(glideTimer, timeToMaxGlideSpeed);
+
+        float progressPct = glideTimer / timeToMaxGlideSpeed;
+        float currentGlideMultiplier = Mathf.Lerp(1.0f, maxGlideMultiplier, progressPct);
+        float dynamicGlideForce = glideForwardForce * currentGlideMultiplier;
+
+        if (state.localVelocity.y < glideDescentVelocity)
         {
-            glideForce += PlayerSpeed.moveSpeed + 1f;
-            rigid.AddForce(transform.forward * glideForce);
-            yield return null;
+            float brakeEffort = (glideDescentVelocity - state.localVelocity.y) * descentBrakingForce;
+            rb.AddForce(transform.up * brakeEffort, ForceMode.Acceleration);
+        }
+
+        Vector3 combinedForward = transform.forward;
+        if (leftHandAnchor != null && rightHandAnchor != null)
+        {
+            combinedForward = (leftHandAnchor.forward + rightHandAnchor.forward).normalized;
+        }
+
+        Vector3 projectGlideDirection = Vector3.ProjectOnPlane(combinedForward, transform.up).normalized;
+
+        if (projectGlideDirection.magnitude > 0.01f)
+        {
+            rb.AddForce(projectGlideDirection * dynamicGlideForce, ForceMode.Acceleration);
         }
     }
 }

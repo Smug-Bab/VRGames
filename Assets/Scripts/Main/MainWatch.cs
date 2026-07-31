@@ -1,25 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class EXIT : MonoBehaviour
+public class MainWatch : MonoBehaviour
 {
-    [SerializeField] InputActionReference button;
+    // Changed from InputActionReference to a direct InputAction
+    [SerializeField] private InputAction button;
 
     private void OnEnable()
     {
-
-        button.action.started += exit;
+        // Direct InputActions must be explicitly enabled
+        button.Enable();
+        button.started += Exit;
     }
 
     private void OnDisable()
     {
-        button.action.started -= exit;
+        // Clean up components and disable the action
+        button.started -= Exit;
+        button.Disable();
     }
 
-    void exit(InputAction.CallbackContext context)
+    // Capitalized method name to match standard C# conventions
+    private void Exit(InputAction.CallbackContext context)
     {
         SceneManager.LoadScene("main");
     }

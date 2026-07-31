@@ -3,7 +3,12 @@ guid: c7c97d03e2ea8407694127643fea9f14
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Peasant_tx.001
+    second: {fileID: 2100000, guid: 0fb890c5370ede453bed1db64705c3f4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

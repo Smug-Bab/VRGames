@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/nullands.unity
     guid: e238cbea300dedcd9b50ff436ce31b22
+  - enabled: 1
+    path: Assets/Scenes/SANCTUMPATHS/Roblox/RobloxHQ.unity
+    guid: 4fffbb94e26ac16049ecea04914ed824
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 7903616bc81e34826b72d1a249c2c1ba, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 98d6fbba5d71d5e51bcacd8fbe007a8f, type: 2}

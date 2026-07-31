@@ -1,60 +1,107 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.InputSystem;
 
-public class sonicdash : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+public class SonicDash : MonoBehaviour
 {
-    [SerializeField] InputAction dashAction;
-    [SerializeField] XRPlayerMovement mover;
-    [SerializeField] Rigidbody rigid;
-    [SerializeField] AudioSource chargeSound;
-    [SerializeField] AudioSource dashSound;
+    [Header("Spindash Settings")]
+    [SerializeField] private float chargeRate = 60f;
+    [SerializeField] private float maxDashForce = 160f;
+    [SerializeField] private float minDashForce = 25f;
+    [SerializeField] private float decayRate = 40f;
 
-    [SerializeField] private float charge;
+    [Header("Input Configuration")]
+    [SerializeField] private InputAction dashAction;
+
+    // Read by XRPlayerMovement
+    public bool isOverridingMovement = false;
+
+    private Rigidbody rb;
+    private float currentDashForce = 0f;
+    private bool isCharging = false;
+    private bool shouldLaunch = false;
+    private bool isRolling = false;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private void OnEnable()
     {
-            dashAction.performed += OnDashPerformed;
-            dashAction.canceled += OnDashCanceled;
-            dashAction.Enable();
+        dashAction.Enable();
+        dashAction.canceled += OnDashReleased;
     }
 
     private void OnDisable()
     {
-            dashAction.performed -= OnDashPerformed;
-            dashAction.canceled -= OnDashCanceled;
-            dashAction.Disable();
-            mover.enabled = true;
+        dashAction.Disable();
+        dashAction.canceled -= OnDashReleased;
+        isOverridingMovement = false;
     }
 
-    private void OnDashPerformed(InputAction.CallbackContext context)
+    private void Update()
     {
-        mover.enabled = false;
-        StartCoroutine(ChargeDash());
-        StopCoroutine(Dash());
-    }
+        isCharging = dashAction.IsPressed();
 
-    private void OnDashCanceled(InputAction.CallbackContext context)
-    {
-        mover.enabled = true;
-        StartCoroutine(Dash());
-        StopCoroutine(ChargeDash());
-    }
-    IEnumerator ChargeDash()
-    {
-        while (rigid.useGravity == true)
+        if (isCharging)
         {
-            charge += charge * Time.deltaTime;
-            chargeSound.pitch += 0.1f;
-            yield return new WaitForSeconds(0.1f);
+            currentDashForce += chargeRate * Time.deltaTime;
+            currentDashForce = Mathf.Min(currentDashForce, maxDashForce);
+        }
+        else
+        {
+            currentDashForce = Mathf.MoveTowards(currentDashForce, 0f, decayRate * Time.deltaTime);
         }
     }
 
-    IEnumerator Dash()
+    private void OnDashReleased(InputAction.CallbackContext context)
     {
-        chargeSound.pitch = 0.1f;
-        mover.moveSpeed = charge;
-        dashSound.PlayOneShot(dashSound.clip);
-        yield return null;
+        if (currentDashForce >= minDashForce)
+        {
+            shouldLaunch = true;
+        }
     }
+
+    public void ManualFixedUpdate(XRPlayerMovement.MovementState state)
+    {
+        bool activelyHolding = dashAction != null && dashAction.IsPressed();
+
+        // If rolling, check if we should cancel out because momentum stopped or we jumped
+        if (isRolling)
+        {
+            float currentMomentum = rb.linearVelocity.magnitude;
+
+            if (currentMomentum < 0.5f || !state.isGrounded)
+            {
+                isRolling = false;
+            }
+        }
+
+        // --- EXPLICIT ROLLING STATE OVERRIDE ---
+        if (activelyHolding || shouldLaunch || isRolling)
+        {
+            isOverridingMovement = true;
+        }
+        else
+        {
+            isOverridingMovement = false;
+        }
+
+        if (shouldLaunch)
+        {
+            shouldLaunch = false;
+
+            if (state.isGrounded)
+            {
+                isRolling = true; // Enter rolling lock state
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+                rb.AddForce(transform.forward * currentDashForce, ForceMode.VelocityChange);
+            }
+
+            currentDashForce = 0f;
+        }
+    }
+
+    public float GetCurrentCharge() => currentDashForce;
 }
