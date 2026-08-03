@@ -1,5 +1,24 @@
+# 1. Ignore everything by default
 *
+!/.gitignore
 
-!Assets/*
-!ProjectSettings/*
-!Packages/*
+# 2. Allow essential Unity root directories
+!/Assets/
+!/Packages/
+!/ProjectSettings/
+
+# 3. Re-enable tracking inside Assets (ignore contents, then whitelist specific folders/extensions)
+/Assets/*
+!/Assets/Scenes/
+!/Assets/Scripts/
+!/Assets/Prefabs/
+# Add more folders here as needed, e.g.:
+# !/Assets/Art/
+
+# 4. Re-enable tracking inside Packages and ProjectSettings
+/Packages/*
+!/Packages/manifest.json
+!/Packages/packages-lock.json
+
+/ProjectSettings/*
+!/ProjectSettings/*.asset
