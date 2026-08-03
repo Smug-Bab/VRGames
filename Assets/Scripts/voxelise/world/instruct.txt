@@ -1,0 +1,29 @@
+Step 1: Create the Specific Asset
+
+Before you can put something in the registry, it has to exist as an asset file in your project folder. Right-click inside your Project window and choose what you want to make:
+
+    To add a Block: Create ➔ Voxel Engine ➔ Block Definition. Name it something like StoneBlock.
+
+    To add a Biome: Create ➔ Voxel Engine ➔ Biome Definition. Name it something like DesertBiome.
+
+    To add a Cave System: Create ➔ Voxel Engine ➔ World Gen ➔ Cave Module. Name it something like StandardCaves.
+
+Step 2: Configure Its Settings
+
+Click on your new asset file and set up its variables in the Inspector:
+
+    For a Block, type in its name and set its top/side/bottom texture array indices (e.g., 0, 1, 2).
+
+    For a Biome, assign which blocks it should use for its surface, soil, and underground layers.
+
+Step 3: Drag It Into the Registry Master List
+
+Now that the asset is ready, you just have to introduce it to your main registry so the engine knows it exists:
+
+    Click on your MainRegistry asset file in your Project window.
+
+    In the Inspector, look at the Registered Blocks or Registered Biomes lists.
+
+    Drag and drop your new block or biome asset directly from your project folders into those list slots.
+
+    ⚠️ Important Reminder: The code handles assigning IDs automatically based on their position in the Registered Blocks list. Do not manually change the blockID variable inside your block assets. The registry will handle assigning ID 0 to your first block, ID 1 to your second, and so on, when the game starts up!
