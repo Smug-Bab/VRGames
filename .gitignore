@@ -1,5 +1,5 @@
 *
 
-!/Assets/
-!/Packages/
-!/ProjectSettings/
+!/Assets/**
+!/Packages/**
+!/ProjectSettings/**
