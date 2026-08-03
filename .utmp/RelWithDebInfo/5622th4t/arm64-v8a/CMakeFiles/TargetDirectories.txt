@@ -1,5 +1,0 @@
-/home/smugbab/Desktop/Projects/VRGames/.utmp/RelWithDebInfo/5622th4t/arm64-v8a/CMakeFiles/edit_cache.dir
-/home/smugbab/Desktop/Projects/VRGames/.utmp/RelWithDebInfo/5622th4t/arm64-v8a/CMakeFiles/rebuild_cache.dir
-/home/smugbab/Desktop/Projects/VRGames/.utmp/RelWithDebInfo/5622th4t/arm64-v8a/GameActivity/CMakeFiles/game.dir
-/home/smugbab/Desktop/Projects/VRGames/.utmp/RelWithDebInfo/5622th4t/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
-/home/smugbab/Desktop/Projects/VRGames/.utmp/RelWithDebInfo/5622th4t/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
