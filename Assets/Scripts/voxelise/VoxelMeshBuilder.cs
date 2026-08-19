@@ -1,142 +1,165 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class VoxelMeshBuilder
 {
-    private int chunkSize;
-    private List<Vector3> vertices = new List<Vector3>();
-    private List<int> triangles = new List<int>();
-    private List<Vector2> uvs = new List<Vector2>();
-    private List<Color32> colors = new List<Color32>();
-    private int vertexIndex = 0;
+    private readonly List<Vector3> vertices = new List<Vector3>();
+    private readonly List<int> triangles = new List<int>();
+    private readonly List<Color32> colors = new List<Color32>();
+    private readonly int chunkSize;
 
     public VoxelMeshBuilder(int size)
     {
-        this.chunkSize = size;
+        chunkSize = size;
     }
 
-    public Mesh GenerateMesh(Vector3Int chunkCoord, ushort[] chunkData, VoxelRegistry registry, VoxelWorldManager worldManager)
+    public Mesh GenerateMesh(Vector3Int chunkCoord, ushort[] voxelData, VoxelRegistry registry, VoxelWorldManager worldManager)
     {
         vertices.Clear();
         triangles.Clear();
-        uvs.Clear();
         colors.Clear();
-        vertexIndex = 0;
-
-        int worldOriginX = chunkCoord.x << 4;
-        int worldOriginY = chunkCoord.y << 4;
-        int worldOriginZ = chunkCoord.z << 4;
-
-        ushort airID = registry.GetBlockID(registry.GetBlock(0));
 
         for (int x = 0; x < chunkSize; x++)
         {
-            int globalX = worldOriginX + x;
             for (int y = 0; y < chunkSize; y++)
             {
-                int globalY = worldOriginY + y;
                 for (int z = 0; z < chunkSize; z++)
                 {
-                    // High performance bitwise shift address flattening mapping
-                    int index = x | (y << 4) | (z << 8);
-                    ushort blockID = chunkData[index];
+                    // Utilizing standard flattened array index
+                    ushort blockID = voxelData[x | (y << 4) | (z << 8)];
+                    if (blockID == 0) continue;
 
-                    if (blockID == airID || blockID == 0) continue;
+                    VoxelBlockDefinition blockDef = registry.GetBlock(blockID);
+                    if (blockDef == null) continue;
 
-                    VoxelBlockDefinition currentBlock = registry.GetBlock(blockID);
-                    if (currentBlock == null) continue;
+                    int globalX = (chunkCoord.x * chunkSize) + x;
+                    int globalY = (chunkCoord.y * chunkSize) + y;
+                    int globalZ = (chunkCoord.z * chunkSize) + z;
 
-                    Color32 blockColor = currentBlock.blockColor;
+                    // Fix B: Apply noise-driven procedural composition shifting
+                    Color32 blockColor = GetDynamicVoxelColor(blockDef.CalculatedBlockColor, globalX, globalY, globalZ, worldManager.worldSeed);
                     Vector3 blockPos = new Vector3(x, y, z);
-                    int globalZ = worldOriginZ + z;
 
-                    // Up face
-                    if (CheckFaceVisible(x, y + 1, z, globalX, globalY + 1, globalZ, chunkData, registry, worldManager, airID))
-                        BuildFace(blockPos, Vector3.up, Vector3.forward, Vector3.right, blockColor);
+                    if (IsAir(voxelData, x, y, z - 1, chunkCoord, worldManager))
+                        BuildFace(blockPos, FaceDirection.Back, blockColor);
 
-                    // Down face
-                    if (CheckFaceVisible(x, y - 1, z, globalX, globalY - 1, globalZ, chunkData, registry, worldManager, airID))
-                        BuildFace(blockPos, Vector3.down, Vector3.back, Vector3.right, blockColor);
+                    if (IsAir(voxelData, x, y, z + 1, chunkCoord, worldManager))
+                        BuildFace(blockPos, FaceDirection.Front, blockColor);
 
-                    // Front face
-                    if (CheckFaceVisible(x, y, z + 1, globalX, globalY, globalZ + 1, chunkData, registry, worldManager, airID))
-                        BuildFace(blockPos, Vector3.forward, Vector3.up, Vector3.left, blockColor);
+                    if (IsAir(voxelData, x - 1, y, z, chunkCoord, worldManager))
+                        BuildFace(blockPos, FaceDirection.Left, blockColor);
 
-                    // Back face
-                    if (CheckFaceVisible(x, y, z - 1, globalX, globalY, globalZ - 1, chunkData, registry, worldManager, airID))
-                        BuildFace(blockPos, Vector3.back, Vector3.up, Vector3.right, blockColor);
+                    if (IsAir(voxelData, x + 1, y, z, chunkCoord, worldManager))
+                        BuildFace(blockPos, FaceDirection.Right, blockColor);
 
-                    // Right face
-                    if (CheckFaceVisible(x + 1, y, z, globalX + 1, globalY, globalZ, chunkData, registry, worldManager, airID))
-                        BuildFace(blockPos, Vector3.right, Vector3.up, Vector3.forward, blockColor);
+                    if (IsAir(voxelData, x, y - 1, z, chunkCoord, worldManager))
+                        BuildFace(blockPos, FaceDirection.Bottom, blockColor);
 
-                    // Left face
-                    if (CheckFaceVisible(x - 1, y, z, globalX - 1, globalY, globalZ, chunkData, registry, worldManager, airID))
-                        BuildFace(blockPos, Vector3.left, Vector3.up, Vector3.back, blockColor);
+                    if (IsAir(voxelData, x, y + 1, z, chunkCoord, worldManager))
+                        BuildFace(blockPos, FaceDirection.Top, blockColor);
                 }
             }
         }
 
         Mesh mesh = new Mesh();
-        mesh.SetVertices(vertices);
-        mesh.SetTriangles(triangles, 0);
-        mesh.SetUVs(0, uvs);
-        mesh.SetColors(colors);
-        mesh.RecalculateNormals();
+        if (vertices.Count > 0)
+        {
+            mesh.SetVertices(vertices);
+            mesh.SetTriangles(triangles, 0);
+            mesh.SetColors(colors);
+            mesh.RecalculateNormals();
+            mesh.RecalculateBounds();
+        }
 
         return mesh;
     }
 
-    private bool CheckFaceVisible(int localX, int localY, int localZ, int globalX, int globalY, int globalZ, ushort[] chunkData, VoxelRegistry registry, VoxelWorldManager worldManager, ushort airID)
+    // Fix B: Perturb the elemental formula's color based on 3D world position
+    private Color32 GetDynamicVoxelColor(Color32 baseColor, int globalX, int globalY, int globalZ, int seed)
     {
-        ushort neighborID;
+        float scale = 0.03f;
 
-        // Perform simple boundary check instead of costly division methods
-        if (localX < 0 || localX >= chunkSize || localY < 0 || localY >= chunkSize || localZ < 0 || localZ >= chunkSize)
-        {
-            neighborID = worldManager.GetBlockAtGlobal(globalX, globalY, globalZ);
-        }
-        else
-        {
-            neighborID = chunkData[localX | (localY << 4) | (localZ << 8)];
-        }
+        // Simplex/Perlin noise shifting to simulate composition variances
+        float hueNoise = (Mathf.PerlinNoise((globalX + seed) * scale, (globalZ + seed) * scale) - 0.5f) * 0.08f;
+        float valNoise = (Mathf.PerlinNoise((globalX - seed) * scale, (globalY + seed) * scale) - 0.5f) * 0.15f;
 
-        if (neighborID == 0 || neighborID == airID) return true;
+        Color.RGBToHSV(baseColor, out float h, out float s, out float v);
 
-        VoxelBlockDefinition neighborBlock = registry.GetBlock(neighborID);
-        return neighborBlock != null && neighborBlock.isTransparent;
+        h += hueNoise;
+        if (h > 1f) h -= 1f;
+        if (h < 0f) h += 1f;
+
+        v = Mathf.Clamp01(v + valNoise);
+        s = Mathf.Clamp01(s + (valNoise * 0.4f));
+
+        return Color.HSVToRGB(h, s, v);
     }
 
-    private void BuildFace(Vector3 blockPos, Vector3 faceNormal, Vector3 upDir, Vector3 rightDir, Color32 faceColor)
+    private bool IsAir(ushort[] localData, int x, int y, int z, Vector3Int chunkCoord, VoxelWorldManager worldManager)
     {
-        Vector3 halfOffset = (faceNormal + upDir + rightDir) * 0.5f;
-        Vector3 v0 = blockPos + halfOffset;
-        Vector3 v1 = blockPos + halfOffset - rightDir;
-        Vector3 v2 = blockPos + halfOffset - rightDir - upDir;
-        Vector3 v3 = blockPos + halfOffset - upDir;
+        if (x >= 0 && x < chunkSize && y >= 0 && y < chunkSize && z >= 0 && z < chunkSize)
+        {
+            return localData[x | (y << 4) | (z << 8)] == 0;
+        }
 
-        vertices.Add(v2);
-        vertices.Add(v3);
-        vertices.Add(v0);
-        vertices.Add(v1);
+        int globalX = (chunkCoord.x * chunkSize) + x;
+        int globalY = (chunkCoord.y * chunkSize) + y;
+        int globalZ = (chunkCoord.z * chunkSize) + z;
 
-        uvs.Add(new Vector2(0, 0));
-        uvs.Add(new Vector2(1, 0));
-        uvs.Add(new Vector2(1, 1));
-        uvs.Add(new Vector2(0, 1));
+        ushort neighborBlock = worldManager.GetBlockAtGlobal(globalX, globalY, globalZ, out bool isLoaded);
 
-        colors.Add(faceColor);
-        colors.Add(faceColor);
-        colors.Add(faceColor);
-        colors.Add(faceColor);
+        if (!isLoaded) return false;
 
-        triangles.Add(vertexIndex + 2);
-        triangles.Add(vertexIndex + 1);
-        triangles.Add(vertexIndex + 0);
-        triangles.Add(vertexIndex + 3);
-        triangles.Add(vertexIndex + 2);
-        triangles.Add(vertexIndex + 0);
+        return neighborBlock == 0;
+    }
 
-        vertexIndex += 4;
+    private enum FaceDirection { Back, Front, Left, Right, Bottom, Top }
+
+    private void BuildFace(Vector3 pos, FaceDirection direction, Color32 color)
+    {
+        int v0Count = vertices.Count;
+
+        Vector3 v000 = pos + new Vector3(0, 0, 0);
+        Vector3 v100 = pos + new Vector3(1, 0, 0);
+        Vector3 v110 = pos + new Vector3(1, 1, 0);
+        Vector3 v010 = pos + new Vector3(0, 1, 0);
+        Vector3 v001 = pos + new Vector3(0, 0, 1);
+        Vector3 v101 = pos + new Vector3(1, 0, 1);
+        Vector3 v111 = pos + new Vector3(1, 1, 1);
+        Vector3 v011 = pos + new Vector3(0, 1, 1);
+
+        switch (direction)
+        {
+            case FaceDirection.Back: // -Z
+                vertices.Add(v000); vertices.Add(v010); vertices.Add(v110); vertices.Add(v100);
+                break;
+            case FaceDirection.Front: // +Z
+                vertices.Add(v101); vertices.Add(v111); vertices.Add(v011); vertices.Add(v001);
+                break;
+            case FaceDirection.Left: // -X
+                vertices.Add(v001); vertices.Add(v011); vertices.Add(v010); vertices.Add(v000);
+                break;
+            case FaceDirection.Right: // +X
+                vertices.Add(v100); vertices.Add(v110); vertices.Add(v111); vertices.Add(v101);
+                break;
+            case FaceDirection.Bottom: // -Y
+                vertices.Add(v001); vertices.Add(v000); vertices.Add(v100); vertices.Add(v101);
+                break;
+            case FaceDirection.Top: // +Y
+                vertices.Add(v010); vertices.Add(v011); vertices.Add(v111); vertices.Add(v110);
+                break;
+        }
+
+        for (int i = 0; i < 4; i++)
+        {
+            colors.Add(color);
+        }
+
+        triangles.Add(v0Count);
+        triangles.Add(v0Count + 1);
+        triangles.Add(v0Count + 2);
+        triangles.Add(v0Count);
+        triangles.Add(v0Count + 2);
+        triangles.Add(v0Count + 3);
     }
 }

@@ -1,78 +1,45 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Voxel Biome", menuName = "Voxel Engine/Biome Definition")]
+[CreateAssetMenu(fileName = "VoxelBiomeDefinition", menuName = "Modular Engine/Biome Definition")]
 public class VoxelBiomeDefinition : ScriptableObject
 {
-    [Header("Terrain Shape")]
-    public float baseHeight = 0f;
-    public float frequency = 0.005f;
-    public float amplitude = 64f;
+    [Header("Climate Criteria")]
+    [Range(0f, 1f)] public float targetTemperature = 0.5f;
+    [Range(0f, 1f)] public float targetHumidity = 0.5f;
 
-    [Header("Dynamic Layer Stacking")]
-    public List<VoxelBiomeLayer> terrainLayers = new List<VoxelBiomeLayer>();
+    [Header("Terrain & Height Noise")]
+    public VoxelNoiseSettings noiseSettings;
 
-    [Header("Modular Features")]
-    public VoxelCaveModule caveSettings;
+    [Header("Block Layer Assignment")]
+    public VoxelBlockDefinition topBlock;
+    public VoxelBlockDefinition fillerBlock;
+    public VoxelBlockDefinition stoneBlock;
+    public int topLayerDepth = 4;
 
-    [Header("Structures")]
-    [Tooltip("List of native block structures that can randomly spawn on the terrain surface.")]
-    public List<VoxelStructureSpawnSettings> allowedStructures;
+    [Header("Structure Generation")]
+    public List<VoxelStructureDefinition> structures = new List<VoxelStructureDefinition>();
 
-    public virtual ushort GetBlockAtHeight(int globalY, int surfaceHeight, VoxelRegistry registry)
+    public ushort GetBlockForHeight(int currentY, int surfaceHeight, int globalX, int globalZ, int seed, VoxelRegistry registry)
     {
-        if (globalY > surfaceHeight) return 0;
-
-        int depth = surfaceHeight - globalY;
-        int currentDepthOffset = 0;
-
-        for (int i = 0; i < terrainLayers.Count; i++)
+        if (noiseSettings != null && VoxelCaveCarver.IsCave(globalX, currentY, globalZ, noiseSettings, seed))
         {
-            var layer = terrainLayers[i];
-            if (layer.block == null) continue;
-
-            currentDepthOffset += layer.thickness;
-
-            if (depth < currentDepthOffset)
-            {
-                return registry.GetBlockID(layer.block);
-            }
+            return 0; // Air
         }
 
-        if (caveSettings != null && caveSettings.baseStoneBlock != null)
+        if (currentY > surfaceHeight)
         {
-            return registry.GetBlockID(caveSettings.baseStoneBlock);
+            return 0; // Air above ground
+        }
+        else if (currentY == surfaceHeight)
+        {
+            return registry.GetID(topBlock);
+        }
+        else if (currentY > surfaceHeight - topLayerDepth)
+        {
+            return registry.GetID(fillerBlock);
         }
 
-        return 0;
+        return registry.GetID(stoneBlock);
     }
-}
-
-[System.Serializable]
-public struct VoxelBiomeLayer
-{
-    public VoxelBlockDefinition block;
-    public int thickness;
-}
-
-[System.Serializable]
-public struct VoxelStructureSpawnSettings
-{
-    public string structureName;
-
-    [Range(0f, 1f)] public float spawnChance;
-
-    [Header("Bounding Box (Optimized Spacing Checks)")]
-    public int structureWidth;  // X Size
-    public int structureLength; // Z Size
-
-    [Tooltip("The blocks that compose this object relative to its origin.")]
-    public List<VoxelStructureBlockOffset> structureBlocks;
-}
-
-[System.Serializable]
-public struct VoxelStructureBlockOffset
-{
-    public Vector3Int relativePosition;
-    public VoxelBlockDefinition blockType;
 }

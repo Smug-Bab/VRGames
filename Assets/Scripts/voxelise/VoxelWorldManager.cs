@@ -1,405 +1,369 @@
-using UnityEngine;
 using System.Collections.Generic;
+using Unity.Collections;
+using Unity.Jobs;
+using UnityEngine;
 
+[RequireComponent(typeof(VoxelRegistry))]
 public class VoxelWorldManager : MonoBehaviour
 {
-    [Header("References")]
-    public VoxelRegistry registry;
+    [Header("World Setup")]
     public Transform playerTransform;
-    public Material worldMaterial;
+    public Material defaultChunkMaterial;
 
-    [Header("Settings")]
-    public const int chunkSize = 16;
-    public int viewDistance = 4;
+    [Tooltip("If true, a random seed will be generated every time the game starts.")]
+    public bool useRandomSeed = true;
+    public int customSeed = 1337;
 
-    [Header("Seed Settings")]
-    public bool randomizeSeedOnStart = false; // Changed default to false
-    public int worldSeed = 0; // Default set to 0
+    [HideInInspector]
+    public int worldSeed;
 
-    [Header("Performance Ticking")]
-    public int tickRadius = 1;
-    public int randomTicksPerChunk = 30;
+    [Header("World Boundaries")]
+    public int worldLowerLimit = 0;
+    public int worldUpperLimit = 128;
 
-    private Dictionary<Vector3Int, GameObject> activeChunks = new Dictionary<Vector3Int, GameObject>();
-    private Dictionary<Vector3Int, ushort[]> chunkDataRegistry = new Dictionary<Vector3Int, ushort[]>();
-    private Vector3Int lastPlayerChunkCoord = new Vector3Int(-999, -999, -999);
-    private float tickTimer = 0f;
+    [Header("Biome Climate Noise Scaling")]
+    public float temperatureScale = 0.002f;
+    public float humidityScale = 0.002f;
 
-    private Dictionary<Vector3Int, ushort> globalStructureBuffer = new Dictionary<Vector3Int, ushort>();
-    private HashSet<Vector2Int> evaluatedStructureColumns = new HashSet<Vector2Int>();
+    [Header("Planetary Climate Settings")]
+    public float basePlanetaryTemperature = 288.15f;
+    public float biomeTemperatureVariance = 40.0f;
 
-    private ushort grassID;
-    private ushort dirtID;
-    private ushort stoneID;
-    private bool isIDsCached = false;
+    [Header("Streaming Settings")]
+    public int renderDistance = 4;
+
+    [Header("Thermal Simulation")]
+    public int thermalTickInterval = 4;
+    private int frameCounter = 0;
+
+    private VoxelRegistry registry;
+    private readonly Dictionary<Vector3Int, VoxelChunk> activeChunks = new Dictionary<Vector3Int, VoxelChunk>();
+    private Vector3Int lastPlayerChunkCoord = new Vector3Int(int.MaxValue, int.MaxValue, int.MaxValue);
 
     private void Awake()
     {
-        if (randomizeSeedOnStart)
-        {
-            worldSeed = Random.Range(int.MinValue, int.MaxValue);
-            Debug.Log($"[World Manager] Infinite Seed: {worldSeed}");
-        }
-        else
-        {
-            worldSeed = 0; // Explicitly ensure seed is 0 if randomization is off
-            Debug.Log($"[World Manager] Fixed Seed: {worldSeed}");
-        }
+        worldSeed = useRandomSeed ? Random.Range(-100000, 100000) : customSeed;
 
-        if (registry != null)
-        {
-            registry.Initialize();
-            CacheBlockIDs();
-        }
-    }
-
-    private void CacheBlockIDs()
-    {
-        if (isIDsCached || registry == null) return;
-
-        if (registry.registeredBiomes != null && registry.registeredBiomes.Count > 0)
-        {
-            VoxelBiomeDefinition biome = registry.registeredBiomes[0];
-
-            if (biome.terrainLayers != null && biome.terrainLayers.Count > 0)
-            {
-                if (biome.terrainLayers.Count > 0) grassID = registry.GetBlockID(biome.terrainLayers[0].block);
-                if (biome.terrainLayers.Count > 1) dirtID = registry.GetBlockID(biome.terrainLayers[1].block);
-            }
-
-            if (biome.caveSettings != null && biome.caveSettings.baseStoneBlock != null)
-            {
-                stoneID = registry.GetBlockID(biome.caveSettings.baseStoneBlock);
-            }
-        }
-
-        isIDsCached = true;
+        registry = GetComponent<VoxelRegistry>();
+        registry.Initialize();
     }
 
     private void Update()
     {
         if (playerTransform == null) return;
 
-        Vector3 localPlayerPos = playerTransform.position - transform.position;
-
-        int currentChunkX = Mathf.FloorToInt(localPlayerPos.x / chunkSize);
-        int currentChunkY = Mathf.FloorToInt(localPlayerPos.y / chunkSize);
-        int currentChunkZ = Mathf.FloorToInt(localPlayerPos.z / chunkSize);
-        Vector3Int playerChunkCoord = new Vector3Int(currentChunkX, currentChunkY, currentChunkZ);
-
-        if (playerChunkCoord != lastPlayerChunkCoord)
+        Vector3Int currentChunkCoord = GetChunkCoordFromPosition(playerTransform.position);
+        if (currentChunkCoord != lastPlayerChunkCoord)
         {
-            UpdateVisibleChunks(playerChunkCoord);
-            lastPlayerChunkCoord = playerChunkCoord;
+            lastPlayerChunkCoord = currentChunkCoord;
+            UpdateWorldChunks(currentChunkCoord);
         }
 
-        tickTimer += Time.deltaTime;
-        if (tickTimer >= 1.0f)
+        frameCounter++;
+        if (frameCounter >= thermalTickInterval)
         {
-            RunBlockTicks(playerChunkCoord);
-            tickTimer = 0f;
+            frameCounter = 0;
+            UpdateThermalSimulation();
         }
     }
 
-    private void RunBlockTicks(Vector3Int playerCoord)
+    private void UpdateWorldChunks(Vector3Int playerCoord)
     {
-        if (registry == null) return;
+        List<Vector3Int> chunksToRemove = new List<Vector3Int>();
 
-        for (int cx = -tickRadius; cx <= tickRadius; cx++)
+        foreach (var kvp in activeChunks)
         {
-            for (int cy = -tickRadius; cy <= tickRadius; cy++)
+            if ((float)(kvp.Key - playerCoord).magnitude > renderDistance + 1)
             {
-                for (int cz = -tickRadius; cz <= tickRadius; cz++)
-                {
-                    Vector3Int targetChunkCoord = playerCoord + new Vector3Int(cx, cy, cz);
-                    if (!chunkDataRegistry.TryGetValue(targetChunkCoord, out ushort[] data)) continue;
-
-                    for (int i = 0; i < randomTicksPerChunk; i++)
-                    {
-                        int rx = Random.Range(0, chunkSize);
-                        int ry = Random.Range(0, chunkSize);
-                        int rz = Random.Range(0, chunkSize);
-
-                        int index = rx | (ry << 4) | (rz << 8);
-                        ushort blockID = data[index];
-
-                        if (blockID == 0) continue;
-
-                        VoxelBlockDefinition block = registry.GetBlock(blockID);
-                        if (block != null && block.isTickable)
-                        {
-                            Vector3Int globalPos = new Vector3Int(
-                                targetChunkCoord.x * chunkSize + rx,
-                                targetChunkCoord.y * chunkSize + ry,
-                                targetChunkCoord.z * chunkSize + rz
-                            );
-                            block.OnTickEvent?.Invoke(globalPos);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private void UpdateVisibleChunks(Vector3Int playerCoord)
-    {
-        if (!isIDsCached) CacheBlockIDs();
-        HashSet<Vector3Int> visibleMeshCoords = new HashSet<Vector3Int>();
-
-        int structureGenerationBuffer = viewDistance + 4;
-        for (int x = -structureGenerationBuffer; x <= structureGenerationBuffer; x++)
-        {
-            for (int z = -structureGenerationBuffer; z <= structureGenerationBuffer; z++)
-            {
-                Vector2Int columnCoord = new Vector2Int(playerCoord.x + x, playerCoord.z + z);
-                PreStageStructuresForChunkColumn(columnCoord);
+                chunksToRemove.Add(kvp.Key);
             }
         }
 
-        for (int x = -viewDistance - 1; x <= viewDistance + 1; x++)
+        foreach (var coord in chunksToRemove)
         {
-            for (int y = -viewDistance - 1; y <= viewDistance + 1; y++)
-            {
-                for (int z = -viewDistance - 1; z <= viewDistance + 1; z++)
-                {
-                    Vector3Int targetCoord = playerCoord + new Vector3Int(x, y, z);
-
-                    if (!chunkDataRegistry.ContainsKey(targetCoord))
-                    {
-                        chunkDataRegistry[targetCoord] = GenerateChunkData(targetCoord);
-                    }
-
-                    if (Mathf.Abs(x) <= viewDistance && Mathf.Abs(y) <= viewDistance && Mathf.Abs(z) <= viewDistance)
-                    {
-                        visibleMeshCoords.Add(targetCoord);
-                    }
-                }
-            }
-        }
-
-        foreach (Vector3Int coord in visibleMeshCoords)
-        {
-            if (!activeChunks.ContainsKey(coord))
-            {
-                BuildChunkMeshInstance(coord);
-            }
-        }
-
-        List<Vector3Int> toRemove = new List<Vector3Int>();
-        foreach (var chunk in activeChunks)
-        {
-            if (!visibleMeshCoords.Contains(chunk.Key))
-            {
-                Destroy(chunk.Value);
-                toRemove.Add(chunk.Key);
-            }
-        }
-
-        for (int i = 0; i < toRemove.Count; i++)
-        {
-            Vector3Int coord = toRemove[i];
+            Destroy(activeChunks[coord].gameObject);
             activeChunks.Remove(coord);
-            chunkDataRegistry.Remove(coord);
+        }
+
+        List<VoxelChunk> newlyGeneratedChunks = new List<VoxelChunk>();
+        List<VoxelChunk> chunksNeedingMeshUpdate = new List<VoxelChunk>();
+
+        // PASS 1: Data Generation Only.
+        // We calculate all voxel positions before ANY mesh is allowed to render.
+        for (int x = -renderDistance; x <= renderDistance; x++)
+        {
+            for (int y = -renderDistance; y <= renderDistance; y++)
+            {
+                for (int z = -renderDistance; z <= renderDistance; z++)
+                {
+                    Vector3Int coord = new Vector3Int(playerCoord.x + x, playerCoord.y + y, playerCoord.z + z);
+
+                    int chunkWorldYMin = coord.y * VoxelChunk.ChunkSize;
+                    int chunkWorldYMax = chunkWorldYMin + VoxelChunk.ChunkSize;
+
+                    if (chunkWorldYMax < worldLowerLimit || chunkWorldYMin > worldUpperLimit)
+                        continue;
+
+                    if (!activeChunks.ContainsKey(coord))
+                    {
+                        VoxelChunk newChunk = CreateChunkDataOnly(coord);
+                        newlyGeneratedChunks.Add(newChunk);
+                        chunksNeedingMeshUpdate.Add(newChunk);
+                    }
+                }
+            }
+        }
+
+        // Flag neighbors of new chunks to update their meshes so borders stitch seamlessly
+        foreach (var chunk in newlyGeneratedChunks)
+        {
+            Vector3Int pos = chunk.ChunkCoord;
+            CheckAndFlagNeighbor(pos + Vector3Int.right, chunksNeedingMeshUpdate);
+            CheckAndFlagNeighbor(pos + Vector3Int.left, chunksNeedingMeshUpdate);
+            CheckAndFlagNeighbor(pos + Vector3Int.up, chunksNeedingMeshUpdate);
+            CheckAndFlagNeighbor(pos + Vector3Int.down, chunksNeedingMeshUpdate);
+            CheckAndFlagNeighbor(pos + Vector3Int.forward, chunksNeedingMeshUpdate);
+            CheckAndFlagNeighbor(pos + Vector3Int.back, chunksNeedingMeshUpdate);
+        }
+
+        // PASS 2: Mesh Generation.
+        // Now that all data is physically present in the arrays, build the geometry.
+        foreach (var chunk in chunksNeedingMeshUpdate)
+        {
+            chunk.RebuildMesh(registry, this);
         }
     }
 
-    private void BuildChunkMeshInstance(Vector3Int coord)
+    private void CheckAndFlagNeighbor(Vector3Int coord, List<VoxelChunk> updateList)
     {
-        GameObject chunkObject = new GameObject($"Chunk_{coord.x}_{coord.y}_{coord.z}");
-        chunkObject.transform.parent = this.transform;
-        chunkObject.transform.localPosition = new Vector3(coord.x * chunkSize, coord.y * chunkSize, coord.z * chunkSize);
-
-        MeshFilter filter = chunkObject.AddComponent<MeshFilter>();
-        MeshRenderer renderer = chunkObject.AddComponent<MeshRenderer>();
-        MeshCollider collider = chunkObject.AddComponent<MeshCollider>();
-
-        renderer.sharedMaterial = worldMaterial;
-
-        ushort[] data = chunkDataRegistry[coord];
-
-        VoxelMeshBuilder meshBuilder = new VoxelMeshBuilder(chunkSize);
-        Mesh mesh = meshBuilder.GenerateMesh(coord, data, registry, this);
-
-        filter.sharedMesh = mesh;
-        collider.sharedMesh = mesh;
-
-        activeChunks.Add(coord, chunkObject);
+        if (activeChunks.TryGetValue(coord, out VoxelChunk chunk))
+        {
+            if (!updateList.Contains(chunk))
+            {
+                updateList.Add(chunk);
+            }
+        }
     }
 
-    private void PreStageStructuresForChunkColumn(Vector2Int columnXZ)
+    private VoxelChunk CreateChunkDataOnly(Vector3Int coord)
     {
-        if (evaluatedStructureColumns.Contains(columnXZ)) return;
-        evaluatedStructureColumns.Add(columnXZ);
+        GameObject chunkObj = new GameObject($"Chunk_{coord.x}_{coord.y}_{coord.z}");
+        chunkObj.transform.SetParent(transform);
+        chunkObj.transform.position = new Vector3(
+            coord.x * VoxelChunk.ChunkSize,
+            coord.y * VoxelChunk.ChunkSize,
+            coord.z * VoxelChunk.ChunkSize
+        );
 
-        if (registry == null || registry.registeredBiomes.Count == 0) return;
-        VoxelBiomeDefinition biome = registry.registeredBiomes[0];
+        VoxelChunk chunk = chunkObj.AddComponent<VoxelChunk>();
+        float chunkAmbientTemp = CalculateChunkAmbientTemperature(coord);
+        chunk.Initialize(coord, chunkAmbientTemp);
 
-        if (biome.allowedStructures == null || biome.allowedStructures.Count == 0) return;
-
-        Random.State oldState = Random.state;
-        int seedHash = (columnXZ.x.GetHashCode() ^ (columnXZ.y.GetHashCode() << 2)) + worldSeed;
-        Random.InitState(seedHash);
-
-        float seedOffsetX = (worldSeed % 1000) * 100f;
-        float seedOffsetZ = (worldSeed / 1000 % 1000) * 100f;
-
-        for (int i = 0; i < biome.allowedStructures.Count; i++)
+        if (defaultChunkMaterial != null)
         {
-            var spawnSetting = biome.allowedStructures[i];
-            if (spawnSetting.structureBlocks == null || spawnSetting.structureBlocks.Count == 0) continue;
+            chunkObj.GetComponent<MeshRenderer>().material = defaultChunkMaterial;
+        }
 
-            if (Random.value < spawnSetting.spawnChance)
+        GenerateTerrainData(chunk);
+        chunk.SyncVoxelDataToNative();
+        activeChunks.Add(coord, chunk);
+
+        return chunk;
+    }
+
+    private float CalculateChunkAmbientTemperature(Vector3Int coord)
+    {
+        int centerGlobalX = (coord.x * VoxelChunk.ChunkSize) + (VoxelChunk.ChunkSize / 2);
+        int centerGlobalZ = (coord.z * VoxelChunk.ChunkSize) + (VoxelChunk.ChunkSize / 2);
+
+        float tempNoise = Mathf.PerlinNoise((centerGlobalX + worldSeed) * temperatureScale, (centerGlobalZ + worldSeed) * temperatureScale);
+        VoxelBiomeDefinition biome = registry.GetBiomeForLocation(tempNoise, 0.5f);
+
+        float biomeScalar = biome != null ? biome.targetTemperature : 0.5f;
+        return basePlanetaryTemperature + ((biomeScalar - 0.5f) * 2.0f * biomeTemperatureVariance);
+    }
+
+    private void GenerateTerrainData(VoxelChunk chunk)
+    {
+        int startX = chunk.ChunkCoord.x * VoxelChunk.ChunkSize;
+        int startY = chunk.ChunkCoord.y * VoxelChunk.ChunkSize;
+        int startZ = chunk.ChunkCoord.z * VoxelChunk.ChunkSize;
+
+        for (int x = 0; x < VoxelChunk.ChunkSize; x++)
+        {
+            for (int z = 0; z < VoxelChunk.ChunkSize; z++)
             {
-                int marginX = Mathf.Clamp(chunkSize - spawnSetting.structureWidth, 0, chunkSize - 1);
-                int marginZ = Mathf.Clamp(chunkSize - spawnSetting.structureLength, 0, chunkSize - 1);
+                int globalX = startX + x;
+                int globalZ = startZ + z;
 
-                int localX = (marginX > 0) ? Random.Range(0, marginX) : 0;
-                int localZ = (marginZ > 0) ? Random.Range(0, marginZ) : 0;
+                float temp = Mathf.PerlinNoise((globalX + worldSeed) * temperatureScale, (globalZ + worldSeed) * temperatureScale);
+                float hum = Mathf.PerlinNoise((globalX - worldSeed) * humidityScale, (globalZ - worldSeed) * humidityScale);
 
-                int globalX = (columnXZ.x * chunkSize) + localX;
-                int globalZ = (columnXZ.y * chunkSize) + localZ;
+                VoxelBiomeDefinition biome = registry.GetBiomeForLocation(temp, hum);
 
-                float sampleX = (globalX * biome.frequency) + seedOffsetX;
-                float sampleZ = (globalZ * biome.frequency) + seedOffsetZ;
-                int surfaceHeight = Mathf.FloorToInt(biome.baseHeight + (Mathf.PerlinNoise(sampleX, sampleZ) * biome.amplitude));
+                int surfaceHeight = (biome != null && biome.noiseSettings != null)
+                ? Mathf.FloorToInt(biome.noiseSettings.Evaluate2DSurface(globalX, globalZ, worldSeed))
+                : 16;
 
-                for (int b = 0; b < spawnSetting.structureBlocks.Count; b++)
+                for (int y = 0; y < VoxelChunk.ChunkSize; y++)
                 {
-                    var item = spawnSetting.structureBlocks[b];
-                    if (item.blockType == null) continue;
+                    int globalY = startY + y;
 
-                    Vector3Int structureBlockGlobalPos = new Vector3Int(
-                        globalX + item.relativePosition.x,
-                        (surfaceHeight + 1) + item.relativePosition.y,
-                                                                        globalZ + item.relativePosition.z
+                    if (globalY < worldLowerLimit || globalY > worldUpperLimit)
+                    {
+                        chunk.SetBlockLocal(x, y, z, 0);
+                        continue;
+                    }
+
+                    ushort blockID = biome != null
+                    ? biome.GetBlockForHeight(globalY, surfaceHeight, globalX, globalZ, worldSeed, registry)
+                    : (ushort)0;
+
+                    if (chunk.GetBlockLocal(x, y, z) == 0)
+                    {
+                        chunk.SetBlockLocal(x, y, z, blockID);
+                    }
+
+                    if (globalY == surfaceHeight && blockID != 0 && biome != null && biome.structures != null)
+                    {
+                        TrySpawnStructures(chunk, x, y, z, globalX, globalZ, biome);
+                    }
+                }
+            }
+        }
+    }
+
+    private void TrySpawnStructures(VoxelChunk chunk, int localX, int localY, int localZ, int globalX, int globalZ, VoxelBiomeDefinition biome)
+    {
+        foreach (var structDef in biome.structures)
+        {
+            if (structDef == null) continue;
+
+            float hash = Mathf.Abs((globalX * 73856093 ^ globalZ * 19349663 ^ worldSeed) % 10000) / 10000f;
+            if (hash < structDef.spawnChance)
+            {
+                int globalY = (chunk.ChunkCoord.y * VoxelChunk.ChunkSize) + localY + 1;
+                if (globalY <= worldUpperLimit)
+                {
+                    VoxelStructureGenerator.PlaceStructure(
+                        chunk,
+                        new Vector3Int(localX, localY + 1, localZ),
+                                                           structDef,
+                                                           registry
                     );
-
-                    ushort assignedID = registry.GetBlockID(item.blockType);
-
-                    if (!globalStructureBuffer.ContainsKey(structureBlockGlobalPos))
-                    {
-                        globalStructureBuffer[structureBlockGlobalPos] = assignedID;
-                    }
                 }
+                break;
             }
         }
-        Random.state = oldState;
     }
 
-    private ushort[] GenerateChunkData(Vector3Int chunkXYZ)
+    private void UpdateThermalSimulation()
     {
-        ushort[] chunkData = new ushort[4096];
-        if (registry == null || registry.registeredBiomes.Count == 0) return chunkData;
+        if (activeChunks.Count == 0) return;
 
-        VoxelBiomeDefinition biome = registry.registeredBiomes[0];
+        float deltaTime = Time.deltaTime * thermalTickInterval;
+        NativeList<JobHandle> jobHandles = new NativeList<JobHandle>(activeChunks.Count, Allocator.Temp);
 
-        float seedOffsetX = (worldSeed % 1000) * 100f;
-        float seedOffsetZ = (worldSeed / 1000 % 1000) * 100f;
-
-        int originX = chunkXYZ.x * chunkSize;
-        int originY = chunkXYZ.y * chunkSize;
-        int originZ = chunkXYZ.z * chunkSize;
-
-        Vector3Int lookupPos = Vector3Int.zero;
-
-        for (int x = 0; x < chunkSize; x++)
+        foreach (var chunk in activeChunks.Values)
         {
-            int globalX = originX + x;
-            lookupPos.x = globalX;
-
-            for (int z = 0; z < chunkSize; z++)
-            {
-                int globalZ = originZ + z;
-                lookupPos.z = globalZ;
-
-                float sampleX = (globalX * biome.frequency) + seedOffsetX;
-                float sampleZ = (globalZ * biome.frequency) + seedOffsetZ;
-                int surfaceHeight = Mathf.FloorToInt(biome.baseHeight + (Mathf.PerlinNoise(sampleX, sampleZ) * biome.amplitude));
-
-                for (int y = 0; y < chunkSize; y++)
-                {
-                    int globalY = originY + y;
-                    lookupPos.y = globalY;
-
-                    ushort targetBlock = 0;
-
-                    if (globalStructureBuffer.TryGetValue(lookupPos, out ushort structureBlockID))
-                    {
-                        targetBlock = structureBlockID;
-                    }
-                    else if (globalY <= surfaceHeight)
-                    {
-                        targetBlock = biome.GetBlockAtHeight(globalY, surfaceHeight, registry);
-
-                        if (targetBlock == 0)
-                        {
-                            if (globalY == surfaceHeight) targetBlock = grassID;
-                            else if (globalY > surfaceHeight - 4) targetBlock = dirtID;
-                            else targetBlock = stoneID;
-                        }
-                    }
-
-                    int index = x | (y << 4) | (z << 8);
-                    chunkData[index] = targetBlock;
-                }
-            }
+            JobHandle handle = chunk.ScheduleThermalJob(deltaTime, chunk.AmbientTemperature);
+            jobHandles.Add(handle);
         }
-        return chunkData;
+
+        JobHandle combinedHandle = JobHandle.CombineDependencies(jobHandles);
+        combinedHandle.Complete();
+
+        jobHandles.Dispose();
     }
 
     public ushort GetBlockAtGlobal(int globalX, int globalY, int globalZ)
     {
-        int chunkX = globalX >> 4;
-        int chunkY = globalY >> 4;
-        int chunkZ = globalZ >> 4;
-        Vector3Int chunkCoord = new Vector3Int(chunkX, chunkY, chunkZ);
-
-        if (!chunkDataRegistry.TryGetValue(chunkCoord, out ushort[] data))
-        {
-            return 0;
-        }
-
-        int localX = globalX & 15;
-        int localY = globalY & 15;
-        int localZ = globalZ & 15;
-
-        return data[localX | (localY << 4) | (localZ << 8)];
+        return GetBlockAtGlobal(globalX, globalY, globalZ, out _);
     }
 
-    /// <summary>
-    /// Modifies a block at absolute world coordinates and automatically updates the chunk's visual mesh.
-    /// </summary>
-    public void SetBlockAtGlobal(int globalX, int globalY, int globalZ, ushort newBlockID)
+    // Sets a block at global coordinates. Returns true if set on a loaded chunk.
+    public bool SetBlockAtGlobal(int globalX, int globalY, int globalZ, ushort blockID, bool rebuild = true)
     {
-        // 1. Bitwise shift to identify the chunk coordinate
-        int chunkX = globalX >> 4;
-        int chunkY = globalY >> 4;
-        int chunkZ = globalZ >> 4;
-        Vector3Int chunkCoord = new Vector3Int(chunkX, chunkY, chunkZ);
+        if (globalY < worldLowerLimit || globalY > worldUpperLimit)
+            return false;
 
-        // 2. Make sure the chunk actually exists in our data grid
-        if (chunkDataRegistry.TryGetValue(chunkCoord, out ushort[] data))
+        Vector3Int coord = GetChunkCoordFromGlobal(globalX, globalY, globalZ);
+
+        if (activeChunks.TryGetValue(coord, out VoxelChunk chunk))
         {
-            // 3. Bitwise AND mask (x & 15) to pull the local inside-chunk index safely
-            int localX = globalX & 15;
-            int localY = globalY & 15;
-            int localZ = globalZ & 15;
+            int localX = globalX - (coord.x * VoxelChunk.ChunkSize);
+            int localY = globalY - (coord.y * VoxelChunk.ChunkSize);
+            int localZ = globalZ - (coord.z * VoxelChunk.ChunkSize);
 
-            int flattenedIndex = localX | (localY << 4) | (localZ << 8);
-            data[flattenedIndex] = newBlockID;
-
-            // 4. Force immediate graphic mesh update if the chunk is actively rendered
-            if (activeChunks.TryGetValue(chunkCoord, out GameObject chunkObject))
+            if (localX >= 0 && localX < VoxelChunk.ChunkSize && localY >= 0 && localY < VoxelChunk.ChunkSize && localZ >= 0 && localZ < VoxelChunk.ChunkSize)
             {
-                MeshFilter filter = chunkObject.GetComponent<MeshFilter>();
-                MeshCollider collider = chunkObject.GetComponent<MeshCollider>();
+                chunk.SetBlockLocal(localX, localY, localZ, blockID);
 
-                VoxelMeshBuilder meshBuilder = new VoxelMeshBuilder(chunkSize);
-                Mesh updatedMesh = meshBuilder.GenerateMesh(chunkCoord, data, registry, this);
+                if (rebuild)
+                {
+                    chunk.RebuildMesh(registry, this);
 
-                if (filter != null) filter.sharedMesh = updatedMesh;
-                if (collider != null) collider.sharedMesh = updatedMesh;
+                    // Also rebuild simple neighbors to keep seams consistent
+                    Vector3Int[] neighbors = new Vector3Int[] { Vector3Int.right, Vector3Int.left, Vector3Int.up, Vector3Int.down, Vector3Int.forward, Vector3Int.back };
+                    foreach (var n in neighbors)
+                    {
+                        Vector3Int nc = coord + n;
+                        if (activeChunks.TryGetValue(nc, out VoxelChunk neigh))
+                        {
+                            neigh.RebuildMesh(registry, this);
+                        }
+                    }
+                }
+
+                return true;
             }
         }
+
+        return false;
+    }
+
+    public ushort GetBlockAtGlobal(int globalX, int globalY, int globalZ, out bool isLoaded)
+    {
+        isLoaded = true;
+
+        if (globalY < worldLowerLimit || globalY > worldUpperLimit)
+            return 0;
+
+        Vector3Int coord = GetChunkCoordFromGlobal(globalX, globalY, globalZ);
+
+        if (activeChunks.TryGetValue(coord, out VoxelChunk chunk))
+        {
+            int localX = globalX - (coord.x * VoxelChunk.ChunkSize);
+            int localY = globalY - (coord.y * VoxelChunk.ChunkSize);
+            int localZ = globalZ - (coord.z * VoxelChunk.ChunkSize);
+            return chunk.GetBlockLocal(localX, localY, localZ);
+        }
+
+        isLoaded = false;
+        return 0;
+    }
+
+    public Vector3Int GetChunkCoordFromPosition(Vector3 pos)
+    {
+        // Defensive check for invalid input
+        if (float.IsNaN(pos.x) || float.IsNaN(pos.y) || float.IsNaN(pos.z))
+        {
+            return Vector3Int.zero;
+        }
+        return GetChunkCoordFromGlobal(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
+    }
+
+    private Vector3Int GetChunkCoordFromGlobal(int globalX, int globalY, int globalZ)
+    {
+        return new Vector3Int(
+            FloorToChunk(globalX),
+                              FloorToChunk(globalY),
+                              FloorToChunk(globalZ)
+        );
+    }
+
+    private int FloorToChunk(int value)
+    {
+        return value >= 0 ? value / VoxelChunk.ChunkSize : (value - VoxelChunk.ChunkSize + 1) / VoxelChunk.ChunkSize;
     }
 }
