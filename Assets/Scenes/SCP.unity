@@ -119,56 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &142274911
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 142274913}
-  - component: {fileID: 142274912}
-  m_Layer: 0
-  m_Name: LCMazeGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &142274912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142274911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9490e0d4f1663ec888f4b8f76f05b483, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MazeGenerator
-  oneExitModules: []
-  twoExitModules: []
-  threeExitModules: []
-  fourExitModules: []
-  startModule: {fileID: 0}
-  maxModules: 50
---- !u!4 &142274913
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142274911}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1616603651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226,9 +176,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a3498b836a1e9d3a005cc1966beac8, type: 3}
+--- !u!1 &2040923210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2040923212}
+  - component: {fileID: 2040923211}
+  m_Layer: 6
+  m_Name: SCP_MazeGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2040923211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040923210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9490e0d4f1663ec888f4b8f76f05b483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SCP_MazeGenerator
+  maxRooms: 75
+  startRoomPrefab: {fileID: 3511378596686869783, guid: b6cba6df1a97a5b12bc159169f4d4bfa, type: 3}
+  oneWayRooms:
+    prefabs:
+    - {fileID: 3511378596686869783, guid: b6cba6df1a97a5b12bc159169f4d4bfa, type: 3}
+    weight: 1
+  twoWayRooms:
+    prefabs:
+    - {fileID: 5981968382586723264, guid: 22504c900f4d959128254686a2450ea3, type: 3}
+    - {fileID: 3858911382459400317, guid: 934fae7b1b47866a8bd3b34c39b4a67f, type: 3}
+    weight: 5
+  threeWayRooms:
+    prefabs:
+    - {fileID: 7824922294800204263, guid: b4d1f3e9facc24be6a233d0389f79a02, type: 3}
+    weight: 10
+  fourWayRooms:
+    prefabs:
+    - {fileID: 8503376276719191095, guid: b86a02cc9d4c69d1f930de88ec410e95, type: 3}
+    weight: 10
+  jointName: joint
+  minRoomDistance: 3
+--- !u!4 &2040923212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040923210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 142274913}
+  - {fileID: 2040923212}
   - {fileID: 1616603651}

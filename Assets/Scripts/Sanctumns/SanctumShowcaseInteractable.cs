@@ -11,19 +11,6 @@ public class SanctumShowcaseInteractable : MonoBehaviour
     [Header("Interaction Scene")]
     [SerializeField] private string sceneToLoad;
 
-    [Header("Events")]
-    [Tooltip("Add functions here that should fire immediately when this specific object is interacted with.")]
-    public UnityEvent OnInteractionTriggered;
-
-    /// <summary>
-    /// This is the main entry point called by your system architecture when selected.
-    /// </summary>
-    public void Interact()
-    {
-        OnInteractionTriggered?.Invoke();
-    }
-
-    // --- Public Utility Functions to Hook Up into UnityEvents ---
 
     public void PlayShowcaseAnimation()
     {
