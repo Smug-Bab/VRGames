@@ -206,16 +206,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SCP_MazeGenerator
   maxRooms: 75
+  maxGenerationRetries: 50
   startRoomPrefab: {fileID: 3511378596686869783, guid: b6cba6df1a97a5b12bc159169f4d4bfa, type: 3}
+  doorPrefab: {fileID: 1247466095980479483, guid: 5e5e1b3b1deb13d509b46ebbfe7529f0, type: 3}
+  checkpointPrefab: {fileID: 1429334814102499122, guid: 74642706b932d8538bce23d6d1378997, type: 3}
   oneWayRooms:
     prefabs:
     - {fileID: 3511378596686869783, guid: b6cba6df1a97a5b12bc159169f4d4bfa, type: 3}
-    weight: 1
+    weight: 5
   twoWayRooms:
     prefabs:
     - {fileID: 5981968382586723264, guid: 22504c900f4d959128254686a2450ea3, type: 3}
     - {fileID: 3858911382459400317, guid: 934fae7b1b47866a8bd3b34c39b4a67f, type: 3}
-    weight: 5
+    weight: 80
   threeWayRooms:
     prefabs:
     - {fileID: 7824922294800204263, guid: b4d1f3e9facc24be6a233d0389f79a02, type: 3}
@@ -223,9 +226,21 @@ MonoBehaviour:
   fourWayRooms:
     prefabs:
     - {fileID: 8503376276719191095, guid: b86a02cc9d4c69d1f930de88ec410e95, type: 3}
-    weight: 10
+    weight: 5
+  specialRoomPrefabs:
+  - {fileID: 1488970588226120276, guid: c300c46c0720a3dccb5a2133fec91b0a, type: 3}
+  - {fileID: 6834111766933339971, guid: 46c3b2643d44a59258fa31b322c14f0d, type: 3}
+  - {fileID: 4869471071480845937, guid: da1d8633c7d368428903c3adbdf00ec7, type: 3}
   jointName: joint
-  minRoomDistance: 3
+  socketSnapTolerance: 0.05
+  edgeTolerance: 2
+  outerEdgeCheckDistance: 3
+  maxCheckpoints: 3
+  minCheckpointSpacing: 3
+  doorwayPadding: 1
+  roomLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!4 &2040923212
 Transform:
   m_ObjectHideFlags: 0
