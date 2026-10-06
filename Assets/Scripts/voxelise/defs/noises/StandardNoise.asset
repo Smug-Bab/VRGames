@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b9bfc515ea80384982c1535100d6f7b, type: 3}
+  m_Name: StandardNoise
+  m_EditorClassIdentifier: Assembly-CSharp::VoxelNoiseSettings
+  baseHeight: 32
+  heightAmplitude: 24
+  surfaceFrequency: 0.01
+  octaves: 3
+  persistence: 0.5
+  lacunarity: 2
+  caveFrequency: 0.03
+  caveThreshold: 0.55
+  minCaveHeight: 4
+  maxCaveHeight: 128

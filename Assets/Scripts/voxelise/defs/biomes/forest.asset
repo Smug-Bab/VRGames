@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d940d82f31335993a83965c1bfadcd4, type: 3}
+  m_Name: forest
+  m_EditorClassIdentifier: Assembly-CSharp::VoxelBiomeDefinition
+  targetTemperature: 0.5
+  targetHumidity: 0.5
+  noiseSettings: {fileID: 11400000, guid: c2973c7a3b1d13f789588b512d332067, type: 2}
+  topBlock: {fileID: 11400000, guid: 9d26b7e7d13f4eebc9b2592fe6e35537, type: 2}
+  fillerBlock: {fileID: 11400000, guid: a928b60a4c22949fcae4f96301d8f93d, type: 2}
+  stoneBlock: {fileID: 11400000, guid: bf59e4a75847b9de08ad84ff9fc21239, type: 2}
+  topLayerDepth: 4
+  structures:
+  - {fileID: 11400000, guid: 0ebd62f0dcce64262a58cf3f970d2c35, type: 2}

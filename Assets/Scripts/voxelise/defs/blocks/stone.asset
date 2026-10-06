@@ -1,0 +1,426 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951b9f7e05eb327e7be230b61c4b39b4, type: 3}
+  m_Name: stone
+  m_EditorClassIdentifier: Assembly-CSharp::VoxelBlockDefinition
+  isSolid: 1
+  isOpaque: 1
+  fullChemicalFormula: (H2O2)(He2O2)(Li2O2)(Be2O2)(B2O2)(C99O2)(N2O2)(O2O2)(F2O2)(Ne2O2)(Na2O2)(Mg2O2)(Al99O2)(Si99O2)(P1O2)(S1O2)(Cl2O2)(Ar2O2)(K2O2)(Ca2O2)(Sc2O2)(Ti99O2)(V2O2)(Cr2O2)(Mn2O2)(Fe1O2)(Co2O2)(Ni2O2)(Cu1O2)(Zn99O2)(Ga2O2)(Ge2O2)(As1O2)(Se1O2)(Br2O2)(Kr2O2)(Rb2O2)(Sr2O2)(Y2O2)(Zr2O2)(Nb2O2)(Mo2O2)(Ru2O2)(Rh2O2)(Pd2O2)(Ag99O2)(Cd2O2)(In2O2)(Sn2O2)(Sb2O2)(Te1O2)(I2O2)(Xe2O2)(Cs2O2)(Ba2O2)(Hf2O2)(Ta2O2)(W2O2)(Re2O2)(Os2O2)(Ir2O2)(Pt99O2)(Au1O2)(Hg2O2)(Tl2O2)(Pb99O2)(Bi2O2)
+  compounds:
+  - smilesFormula: (H2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (He2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Li2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Be2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (B2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (C99O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (N2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (O2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (F2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Ne2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Na2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Mg2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Al99O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Si99O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (P1O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (S1O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Cl2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Ar2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (K2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Ca2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Sc2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Ti99O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (V2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Cr2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Mn2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Fe1O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Co2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Ni2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Cu1O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Zn99O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Ga2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Ge2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (As1O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Se1O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Br2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Kr2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Rb2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Sr2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Y2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Zr2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Nb2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Mo2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Ru2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Rh2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Pd2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Ag99O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Cd2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (In2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Sn2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Sb2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Te1O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (I2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Xe2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Cs2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Ba2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Hf2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Ta2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (W2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Re2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Os2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Ir2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Pt99O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Au1O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Hg2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Tl2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Pb99O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Bi2O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  assumedBlockColor: {r: 0.4975979, g: 0.5066505, b: 0.5293129, a: 1}
+  starterHeat: 0
+  thermalConductivity: 1
+  thermalInsulation: 1
+  isRadioactive: 0
+  debugContributors: 0

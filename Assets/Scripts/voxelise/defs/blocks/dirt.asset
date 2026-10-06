@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951b9f7e05eb327e7be230b61c4b39b4, type: 3}
+  m_Name: dirt
+  m_EditorClassIdentifier: Assembly-CSharp::VoxelBlockDefinition
+  isSolid: 1
+  isOpaque: 1
+  fullChemicalFormula: (SiO2)(Al2O3)(Fe3O4)(C120H22O11)(H4O2)(CaC60O20)
+  compounds:
+  - smilesFormula: (SiO2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Al2O3)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (Fe3O4)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (C120H22O11)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (H4O2)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  - smilesFormula: (CaC60O20)
+    baseConcentration: 0.5
+    noiseVariance: 0.2
+    bondToNextCompound: 0
+    quantityMultiplier: 1
+    netCharge: 0
+  assumedBlockColor: {r: 0.47907946, g: 0.2051174, b: 0.092445545, a: 1}
+  starterHeat: 0
+  thermalConductivity: 1
+  thermalInsulation: 1
+  isRadioactive: 0
+  debugContributors: 0
