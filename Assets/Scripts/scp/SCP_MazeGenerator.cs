@@ -1,13 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class RoomCategory
-{
-    public List<GameObject> prefabs = new List<GameObject>();
-    [Range(0, 100)] public int weight = 10;
-}
-
 public class SCP_MazeGenerator : MonoBehaviour
 {
     [Header("Generation Settings")]

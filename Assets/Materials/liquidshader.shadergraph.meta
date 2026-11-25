@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 67698c230fa93cd51b1b33b03f95166f
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 625f186215c104763be7675aa2d941aa, type: 3}
+  useAsTemplate: 1
+  exposeTemplateAsShader: 1
+  indexedData: {fileID: -3424247175808206760, guid: 67698c230fa93cd51b1b33b03f95166f, type: 3}
+  template:
+    name: 
+    category: 
+    description: 
+    icon: {instanceID: 0}
+    thumbnail: {instanceID: 0}
+    order: 0
